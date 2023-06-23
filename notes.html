@@ -17,7 +17,7 @@
         margin-top: 20px;
       }
       li {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
       a {
         font-weight: bold;
@@ -37,62 +37,85 @@
       <h2>Config2023</h2>
       <p>About the figma conference</p>
 
-      <ul>
-        <li>
-          ★★★★★
-          <a
-            target="”_blank”"
-            href="https://config.figma.com/video-on-demand/6329860874112"
-            >Opening sessions</a
-          ><br />
-          0:00 - 50:00 - figma new stuff
-        </li>
-        <li>
-          ★★★★☆
-          <a
-            target="”_blank”"
-            href="https://config.figma.com/video-on-demand/6329869293112"
-            >Prototyping the path: how Slack builds product with customer love
-          </a>
-          <br />
-          about Slack and their principles. Small things that make a difference
-          in the product design and maintaining the product.
-        </li>
-        <li>
-          ★★★★☆
-          <a
-            target="”_blank”"
-            href="https://config.figma.com/video-on-demand/6329870220112"
-            >Figma like the pros
-          </a>
-          <br />
-          hot tips, some useful some not so much
-        </li>
-        <li>
-          ★★★☆☆
-          <a
-            target="”_blank”"
-            href="https://config.figma.com/video-on-demand/6329862841112"
-            >Design Ops: Driving change with design systems and process
-          </a>
-          <br />
-          3:00-25:00 - about design systems and how important they are and also
-          how to not waste time in teams by delivering more value <br />
-        </li>
-        <li>
-          ★★★★☆
-          <a
-            target="”_blank”"
-            href="https://config.figma.com/video-on-demand/6329924726112"
-            >Design Ops: Driving change with design systems and process
-          </a>
-          <br />
-          How to move from atoms to patterns, how AI create new possibilities
-          and help with each part of design process
-          <i>...and i still watchin this</i>
-          <br />
-        </li>
-      </ul>
+      <ul id="sessionsList"></ul>
     </div>
+
+    <script>
+      const sessions = [
+        {
+          rating: "★★★★★ -",
+          link: "https://config.figma.com/video-on-demand/6329860874112",
+          title: "Opening sessions",
+          time: "0:00 - 50:00",
+          description: "figma new stuff",
+        },
+        {
+          rating: "★★★★☆ -",
+          link: "https://config.figma.com/video-on-demand/6329869293112",
+          title:
+            "Prototyping the path: how Slack builds product with customer love",
+          time: "",
+          description:
+            "about Slack and their principles. Small things that make a difference in the product design and maintaining the product.",
+        },
+        {
+          rating: "★★★★☆ -",
+          link: "https://config.figma.com/video-on-demand/6329870220112",
+          title: "Figma like the pros",
+          time: "",
+          description: "hot tips, some useful some not so much",
+        },
+        {
+          rating: "★★★☆☆ -",
+          link: "https://config.figma.com/video-on-demand/6329862841112",
+          title: "Design Ops: Driving change with design systems and process",
+          time: "3:00-25:00",
+          description:
+            "about design systems and how important they are and also how to not waste time in teams by delivering more value",
+        },
+        {
+          rating: "★★★★☆ -",
+          link: "https://config.figma.com/video-on-demand/6329924726112",
+          title: "AI and the future of Design",
+          time: "",
+          description: `
+          <b>1/5</b> - How to move from atoms to patterns, how AI create new possibilities and help with each part of design process
+          <br><b>2/5</b> - How Diagram products works and how they were made, really cool stuff. Figma acquired Diagram so it could be free in the future, i hope
+          <br><b>3/5</b> - history of AI stuff, not important, skip it
+          <br><b>4/5</b> - Adobe and AI, how they tackle the problem with stealing designs
+          <br><b>5/5</b> - also skip it`,
+        },
+      ];
+
+      const sessionsList = document.getElementById("sessionsList");
+
+      sessions.forEach((session) => {
+        const listItem = document.createElement("li");
+
+        const rating = document.createElement("span");
+        rating.textContent = session.rating;
+
+        const link = document.createElement("a");
+        link.setAttribute("target", "_blank");
+        link.setAttribute("href", session.link);
+        link.textContent = session.title;
+
+        const time = document.createElement("i");
+        time.textContent = session.time;
+
+        const description = document.createElement("span");
+        description.innerHTML = session.description;
+
+        listItem.appendChild(rating);
+        listItem.appendChild(document.createTextNode(" "));
+        listItem.appendChild(link);
+        listItem.appendChild(document.createElement("br"));
+        listItem.appendChild(time);
+        listItem.appendChild(document.createElement("br"));
+        listItem.appendChild(description);
+
+        sessionsList.appendChild(listItem);
+      });
+    </script>
   </body>
 </html>
