@@ -1,10 +1,13 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
+import { allPosts } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
+import { PostCard } from '@/components/PostCard'
 
 const meta = {
-  title: 'About Me',
+  title: 'Blog',
   description: 'I like to blog about UX/UI design',
-  url: `${WEBSITE_HOST_URL}/about`,
+  url: `${WEBSITE_HOST_URL}/posts`,
 }
 
 export const metadata: Metadata = {
@@ -24,11 +27,16 @@ export const metadata: Metadata = {
   },
 }
 
-export default function About() {
+export default function Blog() {
+  const posts = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date)),
+  )
   return (
-    <div className="space-y-7">
-      <h1>About</h1>
-      <p>Welcome to the about page</p>
+    <div className="mt-10 space-y-12 ">
+      <h5>My blog posts:</h5>
+      {posts.map((post, idx) => (
+        <PostCard key={idx} {...post} />
+      ))}
     </div>
   )
 }

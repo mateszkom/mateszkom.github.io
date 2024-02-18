@@ -9,6 +9,12 @@ export function Navigation() {
       <Link href="/about" className="nav-link">
         About
       </Link>
+      <Link href="/projects" className="nav-link">
+        Projects
+      </Link>
+      <Link href="/posts" className="nav-link">
+        Blog
+      </Link>
     </nav>
   )
 }

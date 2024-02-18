@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function About() {
+export default function Projects() {
   return (
     <div className="space-y-7">
-      <h1>About</h1>
-      <p>Welcome to the about page</p>
+      <h1>Projects</h1>
+      <p>Welcome to the projects page</p>
     </div>
   )
 }

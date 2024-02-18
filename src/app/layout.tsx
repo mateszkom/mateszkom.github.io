@@ -8,16 +8,16 @@ import Link from 'next/link'
 import './global.css'
 
 const meta = {
-  title: 'Hunter Chang - Website',
+  title: 'Mateusz Skomorucha',
   description:
-    'Sleep deprived father. FE Engineer in China. Lover of Ramen and Kpop',
+    'Mateusz Skomorucha - ux/ui designer, e-commerce graphic designer',
   image: `${WEBSITE_HOST_URL}/og-preview.jpg`,
 }
 
 export const metadata: Metadata = {
   title: {
     default: meta.title,
-    template: '%s | Hunter Chang',
+    template: '%s | Mateusz Skomorucha',
   },
   description: meta.description,
   openGraph: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: meta.description,
     url: WEBSITE_HOST_URL,
     siteName: meta.title,
-    locale: 'en-US',
+    locale: 'pl-PL',
     type: 'website',
     images: [
       {
@@ -67,9 +67,9 @@ export default function RootLayout({
           <footer className="py-16">
             <Container>
               <p>
-                Built by{' '}
-                <Link className="link" href="https://twitter.com/hunterhchang">
-                  Hunter Chang
+                by{' '}
+                <Link className="link" href="https://linkedin.com/in/mateszkom">
+                  Mateusz Skomorucha
                 </Link>
               </p>
             </Container>
