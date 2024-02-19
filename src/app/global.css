@@ -104,6 +104,9 @@
 .nav-link {
   @apply rounded-md px-6 py-2 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none;
 }
+.nav-link2 {
+  @apply rounded-md  hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none;
+}
 
 .nav-post {
   @apply text-secondary hover:text-primary ;

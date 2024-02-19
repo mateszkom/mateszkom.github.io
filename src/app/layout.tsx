@@ -33,15 +33,15 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    title: meta.title,
-    description: meta.description,
-    images: meta.image,
-    card: 'summary_large_image',
-  },
-  alternates: {
-    canonical: WEBSITE_HOST_URL,
-  },
+  // twitter: {
+  //   title: meta.title,
+  //   description: meta.description,
+  //   images: meta.image,
+  //   card: 'summary_large_image',
+  // },
+  // alternates: {
+  //   canonical: WEBSITE_HOST_URL,
+  // },
 }
 
 export default function RootLayout({
