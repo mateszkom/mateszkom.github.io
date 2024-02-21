@@ -1,13 +1,18 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
+import { allProjects } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
+import { ProjectCard } from '@/components/ProjectCard'
 
 const meta = {
-  title: 'About Me',
+  title: 'Projects',
   description: 'I like to blog about UX/UI design',
-  url: `${WEBSITE_HOST_URL}/about`,
+  url: `${WEBSITE_HOST_URL}/projects`,
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('http://localhost:3000'),
+
   title: meta.title,
   description: meta.description,
   openGraph: {
@@ -25,10 +30,15 @@ export const metadata: Metadata = {
 }
 
 export default function Projects() {
+  const projects = allProjects.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date)),
+  )
   return (
-    <div className="space-y-7">
-      <h1>Projects</h1>
-      <p>Welcome to the projects page</p>
+    <div className="mt-10 space-y-12 ">
+      <h5>My blog posts:</h5>
+      {projects.map((post, idx) => (
+        <ProjectCard key={idx} {...post} />
+      ))}
     </div>
   )
 }

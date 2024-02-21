@@ -4,38 +4,12 @@ import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
-const Post = defineDocumentType(() => ({
-  name: 'Post',
-  filePathPattern: `**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      description: 'The title of the post',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      description: 'The date of the post',
-      required: true,
-    },
-    description: {
-      type: 'string',
-      description: 'The description of the post',
-      required: true,
-    },
-  },
-  computedFields: {
-    url: {
-      type: 'string',
-      resolve: (doc) => `/posts/${doc._raw.flattenedPath}`,
-    },
-  },
-}))
+import Post from './src/lib/post.contentlayer'
+import Project from './src/lib/projects.contentlayer'
 
 export default makeSource({
-  contentDirPath: 'posts',
-  documentTypes: [Post],
+  contentDirPath: 'content/',
+  documentTypes: [Post, Project],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

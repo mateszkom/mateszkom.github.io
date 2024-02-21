@@ -1,5 +1,5 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts, type Post } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
 import type { MDXComponents } from 'mdx/types'
 import type { Metadata } from 'next'
@@ -7,6 +7,8 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import IntervarHeader from '../intervarHeader'
+import { MDXProvider } from '@mdx-js/react'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -51,6 +53,7 @@ export async function generateMetadata({
 const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
   Image: (props) => <NextImage className="rounded-lg" {...props} />,
+  IntervarHeader: () => <IntervarHeader />,
 }
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
@@ -65,6 +68,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   return (
     <div>
       <h1>{post.title}</h1>
+      {/* <MDXProvider components={components} /> */}
       <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>
         {format(parseISO(post.date), 'LLLL d, yyyy')}
       </time>
