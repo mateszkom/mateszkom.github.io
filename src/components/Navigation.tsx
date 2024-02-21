@@ -7,6 +7,7 @@ import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon'
 import Bars3Icon from '@heroicons/react/24/outline/Bars3Icon'
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'
 import { Popover } from '@headlessui/react'
+import { useState } from 'react'
 const navigationHome = [{ label: 'Home', icon: HomeIcon, href: '/' }]
 const navigationItems = [
   { label: 'About', icon: AtSymbolIcon, href: '/about' },
@@ -15,33 +16,49 @@ const navigationItems = [
 ]
 
 export function Navigation() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const closeMenu = () => {
+    setIsOpen(false)
+  }
+
   return (
     <Popover>
       <nav className="flex flex-wrap">
         <div className="nav-link flex md:hidden">
-          <Popover.Button>
-            <Bars3Icon className="h-6 w-6" />
+          <Popover.Button onClick={toggleMenu}>
+            {isOpen ? (
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
           </Popover.Button>
-          <Popover.Panel focus className="absolute  transform   md:hidden">
-            <div className="justify-left flex items-start">
-              <div className="nav-link2">
-                <Popover.Button>
-                  <XMarkIcon className="h-6 w-6" />
-                </Popover.Button>
+          {isOpen && (
+            <Popover.Panel focus className="flex md:hidden">
+              <div className="justify-left flex items-start">
+                <div className="absolute left-0 mt-9 flex w-full flex-col items-start bg-white  transition dark:bg-neutral-800">
+                  {navigationItems.map((item) => (
+                    <div key={item.label} className="nav-link w-full">
+                      <Link
+                        href={item.href}
+                        className=" flex w-full items-center"
+                        onClick={closeMenu}
+                      >
+                        <item.icon className="mr-2 h-6 w-6" />
+                        {item.label}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="absolute mt-9 flex  flex-col items-center justify-between bg-white pt-10 transition dark:bg-neutral-800">
-                {navigationItems.map((item) => (
-                  <div key={item.label} className="nav-link">
-                    <Link href={item.href} className="flex items-center">
-                      <item.icon className="mr-2 h-6 w-6" />
-                      {item.label}
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Popover.Panel>
+            </Popover.Panel>
+          )}
         </div>
+
         <div>
           {navigationHome.map((item) => (
             <div key={item.label} className="nav-link">
@@ -52,7 +69,7 @@ export function Navigation() {
             </div>
           ))}
         </div>
-        <div className="hidden sm:flex">
+        <div className="hidden md:flex">
           {navigationItems.map((item) => (
             <div key={item.label} className="nav-link">
               <Link href={item.href} className="flex items-center">

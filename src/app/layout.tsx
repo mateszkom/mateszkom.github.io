@@ -6,7 +6,7 @@ import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import './global.css'
-
+import { useState } from 'react'
 const meta = {
   title: 'Mateusz Skomorucha',
   description:
