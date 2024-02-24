@@ -5,11 +5,11 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
 import Post from './src/lib/post.contentlayer'
-import Project from './src/lib/projects.contentlayer'
+import Project from './src/lib/project.contentlayer'
 
 export default makeSource({
-  contentDirPath: 'content/posts',
-  documentTypes: [Post],
+  contentDirPath: 'content/',
+  documentTypes: [Post, Project],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
