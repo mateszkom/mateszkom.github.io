@@ -8,8 +8,8 @@ import Post from './src/lib/post.contentlayer'
 import Project from './src/lib/projects.contentlayer'
 
 export default makeSource({
-  contentDirPath: 'content/',
-  documentTypes: [Post, Project],
+  contentDirPath: 'content/posts',
+  documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

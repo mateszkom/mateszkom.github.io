@@ -3,7 +3,7 @@ import { WEBSITE_HOST_URL } from './constants'
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `posts/*.mdx`,
+  filePathPattern: `**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {

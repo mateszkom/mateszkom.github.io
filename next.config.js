@@ -5,6 +5,9 @@ const withMDX = require('@next/mdx')({
 })
 
 /** @type {import('next').NextConfig} */
-const nextConfig = { output: 'export' } //output: 'export'
+const nextConfig = {
+  reactStrickMode: true,
+  output: 'export',
+} //output: 'export'
 
 module.exports = withContentlayer(withMDX(nextConfig))
