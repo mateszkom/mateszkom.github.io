@@ -1,8 +1,16 @@
+import DefaultHeader from '@/app/posts/defaultHeader'
+import IntervarHeader from '@/app/posts/intervarHeader'
 import { Project } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
 import Link from 'next/link'
 
 export function ProjectCard(project: Project) {
+  let projectContent = null
+  if (project.title === 'Intervar') {
+    projectContent = <IntervarHeader />
+  } else {
+    projectContent = <DefaultHeader />
+  }
   return (
     <Link
       className=" flex flex-row items-start justify-between"
@@ -14,6 +22,7 @@ export function ProjectCard(project: Project) {
             <span className="absolute inset-0" />
             {project.title}
           </h3>
+          {projectContent}
         </div>
         <div className="flex items-center gap-x-4 text-xs">
           <time dateTime={project.date}>
