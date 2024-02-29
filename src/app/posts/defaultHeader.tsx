@@ -3,7 +3,7 @@
 import React from 'react'
 
 const DefaultHeader = () => {
-  return <div>Husiek</div>
+  return <div>Test</div>
 }
 
 export default DefaultHeader

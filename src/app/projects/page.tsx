@@ -34,11 +34,13 @@ export default function Projects() {
     compareDesc(new Date(a.date), new Date(b.date)),
   )
   return (
-    <div className="mt-10 space-y-12 ">
-      <h5>My blog posts:</h5>
-      {projects.map((post, idx) => (
-        <ProjectCard key={idx} {...post} />
-      ))}
+    <div>
+      <h2>My blog posts:</h2>
+      <div className="mt-10 flex flex-wrap    ">
+        {projects.map((post, idx) => (
+          <ProjectCard key={idx} {...post} />
+        ))}
+      </div>
     </div>
   )
 }
