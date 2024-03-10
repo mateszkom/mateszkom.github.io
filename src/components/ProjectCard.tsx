@@ -12,13 +12,15 @@ export function ProjectCard(project: Project) {
     projectContent = <DefaultHeader />
   }
   return (
-    <Link
-      className=" mb-4 mr-4 flex h-36 flex-wrap items-start space-x-4 border sm:w-full md:w-1/3"
-      href={project.url}
-    >
-      <article className="flex w-full  ">
-        <div className="group relative">{projectContent}</div>
-      </article>
-    </Link>
+    <>
+      <Link
+        className=" mb-4 flex h-40 flex-wrap items-start space-x-4  border sm:w-full md:w-1/2"
+        href={project.url}
+      >
+        <article className="mr-2 flex ">
+          <div className="group relative ">{projectContent}</div>
+        </article>
+      </Link>
+    </>
   )
 }

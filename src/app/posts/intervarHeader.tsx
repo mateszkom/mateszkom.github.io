@@ -4,7 +4,7 @@ import React from 'react'
 
 const IntervarHeader = () => {
   return (
-    <div className="mx-auto w-full max-w-sm rounded-md border border-blue-300 p-4 shadow">
+    <div className=" ml-2 w-full max-w-sm rounded-md border border-blue-300 p-2 shadow">
       <div className="flex animate-pulse space-x-4">
         <div className="h-10 w-10 rounded-full bg-slate-700"></div>
         <div className="flex-1 space-y-6 py-1">
