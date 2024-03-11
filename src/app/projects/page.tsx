@@ -11,7 +11,7 @@ const meta = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('http://mateszkom.com'),
 
   title: meta.title,
   description: meta.description,
