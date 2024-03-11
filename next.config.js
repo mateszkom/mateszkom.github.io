@@ -6,8 +6,8 @@ const withMDX = require('@next/mdx')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  // output: 'export',
+  // reactStrictMode: true,
+  output: 'export',
 } //output: 'export'
 
 module.exports = withContentlayer(withMDX(nextConfig))
