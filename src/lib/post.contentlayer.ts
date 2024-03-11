@@ -32,16 +32,16 @@ const Post = defineDocumentType(() => ({
       resolve: (doc) =>
         `/posts/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
     },
-    absoluteURL: {
-      type: 'string',
-      resolve: (doc) =>
-        `${WEBSITE_HOST_URL}/posts/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
-    },
-    ogImageURL: {
-      type: 'string',
-      resolve: (doc) =>
-        `/posts/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}/og-image.png`,
-    },
+    // absoluteURL: {
+    //   type: 'string',
+    //   resolve: (doc) =>
+    //     `${WEBSITE_HOST_URL}/posts/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
+    // },
+    // ogImageURL: {
+    //   type: 'string',
+    //   resolve: (doc) =>
+    //     `/posts/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}/og-image.png`,
+    // },
   },
 }))
 

@@ -1,1 +1,1 @@
-export const WEBSITE_HOST_URL = 'https://mateszkom.com'
+export const WEBSITE_HOST_URL = 'https://mateszkom.github.io'

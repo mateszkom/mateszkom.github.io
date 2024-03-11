@@ -32,16 +32,16 @@ const Project = defineDocumentType(() => ({
       resolve: (doc) =>
         `/projects/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
     },
-    absoluteURL: {
-      type: 'string',
-      resolve: (doc) =>
-        `${WEBSITE_HOST_URL}/projects/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
-    },
-    ogImageURL: {
-      type: 'string',
-      resolve: (doc) =>
-        `/projects/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}/og-image.png`,
-    },
+    // absoluteURL: {
+    //   type: 'string',
+    //   resolve: (doc) =>
+    //     `${WEBSITE_HOST_URL}/projects/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
+    // },
+    // ogImageURL: {
+    //   type: 'string',
+    //   resolve: (doc) =>
+    //     `/projects/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}/og-image.png`,
+    // },
   },
 }))
 
