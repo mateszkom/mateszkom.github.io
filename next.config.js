@@ -6,7 +6,7 @@ const withMDX = require('@next/mdx')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrickMode: true,
+  reactStrictMode: true,
   // output: 'export',
 } //output: 'export'
 

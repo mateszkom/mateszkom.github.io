@@ -7,6 +7,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import './global.css'
 import { useState } from 'react'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin-ext'],
+  variable: '--font-inter',
+})
 const meta = {
   title: 'Mateusz Skomorucha',
   description:
@@ -53,7 +59,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${inter.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <header className="py-4">
             <Container>
