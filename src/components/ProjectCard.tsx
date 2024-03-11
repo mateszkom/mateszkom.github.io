@@ -13,10 +13,7 @@ export function ProjectCard(project: Project) {
   }
   return (
     <>
-      <Link
-        className=" mb-4 flex-wrap  border  sm:w-full md:w-1/2"
-        href={project.url}
-      >
+      <Link className=" mb-4 flex-wrap   sm:w-full md:w-1/2" href={project.url}>
         <article className="mr-2  ">
           <div className="group   overflow-hidden">{projectContent}</div>
         </article>

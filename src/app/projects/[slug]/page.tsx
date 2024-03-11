@@ -38,10 +38,7 @@ export async function generateMetadata({
       publishedTime: date,
       url: `${WEBSITE_HOST_URL}/projects/${url}`,
     },
-    twitter: {
-      title,
-      description,
-    },
+
     alternates: {
       canonical: `${WEBSITE_HOST_URL}/projects/${url}`,
     },
@@ -73,7 +70,7 @@ const ProjectLayout = ({ params }: { params: { slug: string } }) => {
       >
         {format(parseISO(project.date), 'LLLL d, yyyy')}
       </time>
-      <article className="prose dark:prose-invert">
+      <article className="prose w-full dark:prose-invert">
         <MDXContent components={mdxComponents} />
       </article>
     </div>
