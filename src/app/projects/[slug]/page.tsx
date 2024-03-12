@@ -11,7 +11,8 @@ import { MDXProvider } from '@mdx-js/react'
 
 export async function generateStaticParams() {
   return allProjects.map((project) => ({
-    slug: project._raw.flattenedPath,
+    slug: project.slug,
+    // slug: project._raw.flattenedPath,
   }))
 }
 

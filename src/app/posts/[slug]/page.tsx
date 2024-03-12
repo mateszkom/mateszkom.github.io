@@ -12,7 +12,8 @@ import { MDXProvider } from '@mdx-js/react'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
-    slug: post._raw.flattenedPath,
+    // slug: post._raw.flattenedPath,
+    slug: post.slug,
   }))
 }
 
