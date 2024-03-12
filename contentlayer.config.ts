@@ -6,10 +6,11 @@ import remarkGfm from 'remark-gfm'
 
 import Post from './src/lib/post.contentlayer'
 import Project from './src/lib/project.contentlayer'
+import Page from './src/lib/page.contentlayer'
 
 export default makeSource({
   contentDirPath: 'content/',
-  documentTypes: [Post, Project],
+  documentTypes: [Post, Project, Page],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

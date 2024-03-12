@@ -82,6 +82,7 @@
 
   h2 {
     @apply text-3xl font-semibold tracking-tight;
+
   }
 
   h3 {
@@ -98,6 +99,9 @@
 
   .link {
     @apply text-primary hover:text-primary/90;
+  }
+  ul {
+    list-style-type:disc;
   }
 }
 

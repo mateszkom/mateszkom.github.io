@@ -7,8 +7,8 @@ import Link from 'next/link'
 import NextImage from 'next/image'
 
 const meta = {
-  title: 'About Me',
-  description: 'I like to blog about UX/UI design',
+  title: 'Resume',
+  description: 'My resume',
   url: `${WEBSITE_HOST_URL}/about`,
 }
 
@@ -35,7 +35,9 @@ const mdxComponents: MDXComponents = {
   Image: (props) => <NextImage className="rounded-lg" {...props} />,
 }
 export default function About() {
-  const page = allPages.find((page) => page._raw.sourceFileName === 'about.mdx')
+  const page = allPages.find(
+    (page) => page._raw.sourceFileName === 'resume.mdx',
+  )
   const MDXComponent = useMDXComponent(page.body.code)
 
   return (

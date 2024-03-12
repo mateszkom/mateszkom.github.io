@@ -49,7 +49,7 @@ export async function generateMetadata({
 // Define your custom MDX components.
 const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  Image: (props) => <NextImage className="rounded-lg" {...props} />,
+  Image: (props) => <NextImage className="w-full rounded-lg" {...props} />,
 }
 
 const ProjectLayout = ({ params }: { params: { slug: string } }) => {
