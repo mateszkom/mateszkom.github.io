@@ -8,8 +8,8 @@ import Bars3Icon from '@heroicons/react/24/outline/Bars3Icon'
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'
 import { Popover } from '@headlessui/react'
 import { useState } from 'react'
-const navigationHome = [{ label: 'Home', icon: HomeIcon, href: '/' }]
 const navigationItems = [
+  { label: 'Home', icon: HomeIcon, href: '/' },
   { label: 'About', icon: AtSymbolIcon, href: '/about' },
   { label: 'Projects', icon: IdentificationIcon, href: '/projects' },
   { label: 'Blog', icon: DocumentTextIcon, href: '/posts' },
@@ -59,24 +59,14 @@ export function Navigation() {
           )}
         </div>
 
-        <div>
-          {navigationHome.map((item) => (
-            <div key={item.label} className="nav-link">
-              <Link href={item.href} className="flex items-center">
-                <item.icon className="mr-2 h-6 w-6" />
-                {item.label}
-              </Link>
-            </div>
-          ))}
-        </div>
         <div className="hidden md:flex">
           {navigationItems.map((item) => (
-            <div key={item.label} className="nav-link">
-              <Link href={item.href} className="flex items-center">
+            <Link key={item.label} href={item.href} className="nav-link">
+              <div className="flex items-center">
                 <item.icon className="mr-2 h-6 w-6" />
                 {item.label}
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </nav>

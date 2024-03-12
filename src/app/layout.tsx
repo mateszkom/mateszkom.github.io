@@ -76,7 +76,7 @@ export default function RootLayout({
             <Container>
               <p>
                 by{' '}
-                <Link className="link" href="https://linkedin.com/in/mateszkom">
+                <Link className="link" href="/about">
                   Mateusz Skomorucha
                 </Link>
               </p>

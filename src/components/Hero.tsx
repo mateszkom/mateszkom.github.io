@@ -13,6 +13,11 @@ const Hero = (): JSX.Element => {
           LPP S.A and work on graphic assets for paid ads along with organic
           stuff for webpage and an app.
         </p>
+        <br></br>
+        More about me{' '}
+        <Link className=" link underline" href="/about">
+          here
+        </Link>
       </article>
       <aside>
         <Image src={heroImg} priority={true} alt="My image" />
