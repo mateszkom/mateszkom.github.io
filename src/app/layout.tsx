@@ -61,9 +61,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <header className="py-4">
+          <header className="relative py-4">
             <Container>
-              <div className="flex items-center justify-between py-6">
+              <div className="flex items-center justify-between py-6 ">
+                <br />
                 <Navigation />
                 <ThemeSwitch />
               </div>

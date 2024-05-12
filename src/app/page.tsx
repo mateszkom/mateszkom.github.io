@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="space-y-7">
+      <div className="space-y-7 ">
         <Hero />
       </div>
       <div className="mb-10 mt-10 space-y-4 border-t border-gray-200  pt-10 dark:border-gray-700 dark:border-opacity-50">

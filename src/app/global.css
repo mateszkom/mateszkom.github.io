@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 96%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -37,8 +37,11 @@
   }
 
   .dark {
-    --background: 222.2 84% 0%;
+    --background: 0 0% 5%;
     --foreground: 210 40% 98%;
+
+    
+
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -46,13 +49,13 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 0 0% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 0.6% 70.5%;
+    --secondary: 0 0% 20%;
     --secondary-foreground: 210 0% 98%;
 
-    --muted: 217.2 0% 10.5%;
+    --muted: 0 0% 50%;
     --muted-foreground: 215 0% 65.1%;
 
     --accent: 217.2 0% 15.5%;
@@ -81,16 +84,16 @@
   }
 
   h2 {
-    @apply text-3xl font-semibold tracking-tight;
+    @apply text-lg font-medium tracking-wide;
 
   }
 
-  h3 {
-    @apply text-2xl font-semibold tracking-tight;
+  span {
+    @apply text-sm font-normal ;
   }
 
   h4 {
-    @apply text-xl font-semibold tracking-tight;
+    @apply text-sm font-medium tracking-tight hover:text-primary/90 text-primary;
   }
 
   p {

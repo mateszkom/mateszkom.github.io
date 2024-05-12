@@ -7,7 +7,6 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import IntervarHeader from '../../projects/intervarHeader'
 import { MDXProvider } from '@mdx-js/react'
 
 export async function generateStaticParams() {
@@ -54,7 +53,6 @@ export async function generateMetadata({
 const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
   Image: (props) => <NextImage className="rounded-lg" {...props} />,
-  IntervarHeader: () => <IntervarHeader />,
 }
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
