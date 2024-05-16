@@ -5,68 +5,23 @@
 @layer base {
   :root {
     --background: 0 0% 96%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 12% 26.1%;
-    --secondary-foreground: 222.2 55.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 0 0% 95%;;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --primary: 0 0% 5%;  
+    --secondary: 0 0% 50%;
+    --teritary: 0 0% 20%;
+    --muted: 0 0% 9%;
 
   }
 
   .dark {
-    --background: 0 0% 5%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 5%;  
+    --primary: 0 0% 96%;
+    --secondary: 0 0% 50%;
+    --teritary: 0 0% 20%;
+    --muted: 0 0% 9%;
 
-    
 
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 210 0% 98%;
-
-    --muted: 0 0% 50%;
-    --muted-foreground: 215 0% 65.1%;
-
-    --accent: 217.2 0% 15.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
 
   }
 }
@@ -76,7 +31,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-primary;
   }
 
   h1 {
@@ -93,7 +48,10 @@
   }
 
   h4 {
-    @apply text-sm font-medium tracking-tight hover:text-primary/90 text-primary;
+    @apply text-sm font-medium tracking-tight text-primary;
+  }
+  h5 {
+    @apply text-sm font-medium tracking-tight text-secondary;
   }
 
   p {
@@ -101,7 +59,7 @@
   }
 
   .link {
-    @apply text-primary hover:text-primary/90;
+    @apply text-primary hover:text-primary/80;
   }
   ul {
     list-style-type:disc;
@@ -109,10 +67,10 @@
 }
 
 .nav-link {
-  @apply rounded-md px-6 py-2 hover:bg-accent  hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none;
+  @apply rounded-md px-6 py-2 hover:bg-accent  hover:text-accent focus:bg-accent focus:text-accent focus:outline-none;
 }
 .nav-link2 {
-  @apply rounded-md  hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none;
+  @apply rounded-md  hover:bg-accent hover:text-accent focus:bg-accent focus:text-accent focus:outline-none;
 }
 
 .nav-post {

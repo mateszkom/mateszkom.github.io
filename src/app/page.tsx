@@ -18,20 +18,20 @@ export default function Home() {
       <div className="space-y-7 ">
         <Hero />
       </div>
-      <div className="mb-10 mt-10 space-y-4 border-t border-gray-200  pt-10 dark:border-gray-700 dark:border-opacity-50">
-        <h3>Latest blog posts</h3>
-
-        {posts.map((post, idx) => (
-          <PostCard key={idx} {...post} />
-        ))}
-      </div>
       <div className="mb-10 mt-10 space-y-4 border-t border-gray-200 pt-10 dark:border-gray-700 dark:border-opacity-50">
-        <h3>Latest projects</h3>
+        <h2>Latest projects</h2>
         <div className="mt-10 flex flex-wrap    ">
           {projects.map((post, idx) => (
             <ProjectCard key={idx} {...post} />
           ))}
         </div>
+      </div>
+      <div className="mb-10 mt-10 space-y-4 border-t border-gray-200  pt-10 dark:border-gray-700 dark:border-opacity-50">
+        <h2>Latest blog posts</h2>
+
+        {posts.map((post, idx) => (
+          <PostCard key={idx} {...post} />
+        ))}
       </div>
     </div>
   )

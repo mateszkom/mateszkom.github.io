@@ -17,7 +17,7 @@ export function ProjectCard(project: Project) {
         </div>
         <div className="flex items-center gap-x-4 text-xs">
           <time dateTime={project.date}>
-            {format(parseISO(project.date), 'yyyy')}
+            {format(parseISO(project.date), 'LLLL d, yyyy')}
           </time>
         </div>
       </article>
