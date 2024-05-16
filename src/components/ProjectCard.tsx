@@ -15,10 +15,15 @@ export function ProjectCard(project: Project) {
             {project.title}
           </h3>
         </div>
+<<<<<<< HEAD
         <div className="flex items-center gap-x-4 text-xs">
           <time dateTime={project.date}>
             {format(parseISO(project.date), 'LLLL d, yyyy')}
           </time>
+=======
+        <div className="flex items-center gap-x-4 rounded-md  border p-1">
+          <span>See more</span>
+>>>>>>> 01c798896989eada575e73bdb4c29e939e56144c
         </div>
       </article>
     </Link>
