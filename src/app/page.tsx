@@ -19,7 +19,7 @@ export default function Home() {
         <Hero />
       </div>
       <div className="mb-10 mt-10 space-y-4 border-t border-gray-200 pt-10 dark:border-gray-700 dark:border-opacity-50">
-        <h2>Latest projects</h2>
+        <h2>My recent projects</h2>
         <div className="mt-10 flex flex-wrap    ">
           {projects.map((post, idx) => (
             <ProjectCard key={idx} {...post} />
