@@ -34,10 +34,13 @@ export default function Blog() {
     compareDesc(new Date(a.date), new Date(b.date)),
   )
   return (
-    <div className="mt-10 space-y-12 ">
-      <h5>My blog posts:</h5>
+    <div className="mb-10  space-y-4  border-accent  pt-10 dark:border-accent dark:border-opacity-50">
+      <h2 className="pb-2">My blog posts</h2>
       {posts.map((post, idx) => (
-        <PostCard key={idx} {...post} />
+        <>
+          <PostCard key={idx} {...post} />
+          <div className=" border-t border-muted  dark:border-muted dark:border-opacity-50"></div>
+        </>
       ))}
     </div>
   )

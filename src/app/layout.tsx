@@ -75,12 +75,12 @@ export default function RootLayout({
           </main>
           <footer className="py-16">
             <Container>
-              <p>
+              <span className="text-sm text-gray-500">
                 by{' '}
                 <Link className="link" href="/about">
                   Mateusz Skomorucha
                 </Link>
-              </p>
+              </span>
             </Container>
           </footer>
         </ThemeProvider>

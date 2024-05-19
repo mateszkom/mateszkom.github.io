@@ -34,9 +34,9 @@ export default function Projects() {
     compareDesc(new Date(a.date), new Date(b.date)),
   )
   return (
-    <div>
-      <h2>My blog posts:</h2>
-      <div className="mt-10 flex flex-wrap    ">
+    <div className="mb-10  space-y-4  border-gray-200 pt-10 dark:border-gray-700 dark:border-opacity-50">
+      <h2 className="pb-2">My projects </h2>
+      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((post, idx) => (
           <ProjectCard key={idx} {...post} />
         ))}

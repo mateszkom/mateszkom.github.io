@@ -62,16 +62,14 @@ const ProjectLayout = ({ params }: { params: { slug: string } }) => {
   const MDXContent = useMDXComponent(project.body.code)
 
   return (
-    <div>
+    <div className="max-w-screen-lg	">
       <h1>{project.title}</h1>
       {/* <MDXProvider components={components} /> */}
-      <time
-        className="my-4 block text-sm text-zinc-400"
-        dateTime={project.date}
-      >
+      <time className="  text-sm text-secondary" dateTime={project.date}>
         {format(parseISO(project.date), 'LLLL d, yyyy')}
       </time>
-      <article className="prose w-full dark:prose-invert">
+
+      <article className="prose-sm w-full pt-10 dark:prose-invert">
         <MDXContent components={mdxComponents} />
       </article>
     </div>

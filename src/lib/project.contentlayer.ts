@@ -21,6 +21,16 @@ const Project = defineDocumentType(() => ({
       description: 'The description of the post',
       required: true,
     },
+    color: {
+      type: 'string',
+      description: 'Main color of project',
+      required: true,
+    },
+    image: {
+      type: 'string',
+      description: 'Head img',
+      required: true,
+    },
   },
   computedFields: {
     slug: {
