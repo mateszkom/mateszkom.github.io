@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { motion } from 'framer-motion'
 
 const navigationItems = [
   { label: 'Home', href: '/' },
@@ -13,23 +14,27 @@ export function Navigation() {
   const currentRoute = usePathname()
 
   return (
-    <nav className=" dark:bg-primary-dark flex flex-wrap rounded-3xl border border-secondary">
-      {navigationItems.map((item) => (
-        <Link
-          key={item.label}
-          href={item.href}
-          passHref
-          className="mx-6 my-2 rounded-3xl "
-        >
-          <h4
-            className={` rounded-2xl ${
-              currentRoute === item.href ? 'font-bold ' : ''
-            }`}
+    <nav className="dark:bg-secondary-dark flex flex-nowrap space-x-4 p-2 md:space-x-6 lg:space-x-8">
+      {navigationItems.map((item) => {
+        const isActive =
+          item.href === '/'
+            ? currentRoute === item.href
+            : currentRoute.startsWith(item.href)
+        return (
+          <Link
+            key={item.label}
+            href={item.href}
+            passHref
+            className="rounded-3xl"
           >
-            {item.label}
-          </h4>
-        </Link>
-      ))}
+            <h4
+              className={`text-secondary underline decoration-accent underline-offset-8 dark:text-secondary ${isActive ? 'font-bold text-primary decoration-primary decoration-2 transition-colors duration-300 dark:text-primary' : ''}`}
+            >
+              {item.label}
+            </h4>
+          </Link>
+        )
+      })}
     </nav>
   )
 }
