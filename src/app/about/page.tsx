@@ -39,7 +39,7 @@ export default function About() {
   const MDXComponent = useMDXComponent(page.body.code)
 
   return (
-    <div className="prose mt-10 space-y-12 dark:prose-invert ">
+    <div className="prose-sm mt-10 space-y-12 dark:prose-invert ">
       <MDXComponent components={mdxComponents} />
     </div>
   )

@@ -14,21 +14,20 @@ export function Navigation() {
   const currentRoute = usePathname()
 
   return (
-    <nav className="dark:bg-secondary-dark flex flex-nowrap space-x-4 p-2 md:space-x-6 lg:space-x-8">
+    <nav className="flex flex-nowrap space-x-4 p-2 md:space-x-6 lg:space-x-8">
       {navigationItems.map((item) => {
         const isActive =
           item.href === '/'
             ? currentRoute === item.href
             : currentRoute.startsWith(item.href)
         return (
-          <Link
-            key={item.label}
-            href={item.href}
-            passHref
-            className="rounded-3xl"
-          >
+          <Link key={item.label} href={item.href} passHref className="">
             <h4
-              className={`text-secondary underline decoration-accent underline-offset-8 dark:text-secondary ${isActive ? 'font-bold text-primary decoration-primary decoration-2 transition-colors duration-300 dark:text-primary' : ''}`}
+              className={`underline decoration-accent underline-offset-8 ${
+                isActive
+                  ? 'font-bold text-primary decoration-primary decoration-2 transition-colors duration-300 dark:text-primary'
+                  : 'text-secondary dark:text-secondary'
+              }`}
             >
               {item.label}
             </h4>
