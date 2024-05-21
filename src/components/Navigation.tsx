@@ -14,7 +14,7 @@ export function Navigation() {
   const currentRoute = usePathname()
 
   return (
-    <nav className="flex flex-nowrap space-x-4 p-2 md:space-x-6 lg:space-x-8">
+    <nav className="flex flex-nowrap space-x-8 p-2 md:space-x-8 lg:space-x-12">
       {navigationItems.map((item) => {
         const isActive =
           item.href === '/'
@@ -25,7 +25,7 @@ export function Navigation() {
             <h4
               className={`underline decoration-accent underline-offset-8 ${
                 isActive
-                  ? 'font-bold text-primary decoration-primary decoration-2 transition-colors duration-300 dark:text-primary'
+                  ? '-translate-y-px transform font-bold text-primary decoration-primary decoration-2 transition-colors duration-300 dark:text-primary'
                   : 'text-secondary dark:text-secondary'
               }`}
             >
