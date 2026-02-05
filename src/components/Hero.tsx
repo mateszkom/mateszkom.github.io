@@ -1,14 +1,13 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import Image from 'next/image'
-import profilePicImg from '/public/images/profile-pic.jpg'
 
-const Hero = (): JSX.Element => {
+const Hero = () => {
   return (
     <section className="mt-10 flex flex-col items-end gap-12 sm:grid sm:grid-cols-3">
       <article className="w-full sm:col-span-2">
         <Image
-          src={profilePicImg}
+          src="/images/profile-pic.jpg"
           priority={true}
           alt="Mateusz Skomorucha"
           className="rounded-full"
@@ -43,7 +42,11 @@ const Hero = (): JSX.Element => {
           DM me on LinkedIn -{'>'}{' '}
         </span>
         <span className="link">
-          <Link target="_blank" href="https://www.linkedin.com/in/mateszkom/">
+          <Link
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.linkedin.com/in/mateszkom/"
+          >
             /in/mateszkom
           </Link>
         </span>

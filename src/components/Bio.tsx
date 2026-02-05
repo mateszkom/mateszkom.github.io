@@ -1,42 +1,40 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import Image from 'next/image'
-import twitterLogoImg from '/public/images/icons/twitterx.svg'
-import figmaLogoImg from '/public/images/icons/figma.svg'
-import linkedinLogoImg from '/public/images/icons/linkedin.svg'
-import githubLogoImg from '/public/images/icons/github.svg'
-import dribbbleLogoImg from '/public/images/icons/dribbble.svg'
-import behanceLogoImg from '/public/images/icons/behance.svg'
 const socialIcons = [
-  { label: '@mateszkom', href: 'https://x.com/mateszkom', img: twitterLogoImg },
+  {
+    label: '@mateszkom',
+    href: 'https://x.com/mateszkom',
+    img: '/images/icons/twitterx.svg',
+  },
   {
     label: '@mateszkom',
     href: 'https://figma.com/@mateszkom',
-    img: figmaLogoImg,
+    img: '/images/icons/figma.svg',
   },
   {
     label: '/mateszkom',
     href: 'https://linkedin.com/in/mateszkom',
-    img: linkedinLogoImg,
+    img: '/images/icons/linkedin.svg',
   },
   {
     label: '/mateszkom',
     href: 'https://github.com/mateszkom',
-    img: githubLogoImg,
+    img: '/images/icons/github.svg',
   },
   {
     label: '/mateszkom',
     href: 'https://dribbble.com/mateszkom',
-    img: dribbbleLogoImg,
+    img: '/images/icons/dribbble.svg',
   },
   {
     label: '/mateszkom',
     href: 'https://behance.com/mateszkom',
-    img: behanceLogoImg,
+    img: '/images/icons/behance.svg',
   },
 ]
 
-const Bio = (): JSX.Element => {
+const Bio = () => {
   return (
     <section className="mt-10 flex flex-col gap-12 sm:grid sm:grid-cols-2">
       <article className="w-full sm:col-span-1">

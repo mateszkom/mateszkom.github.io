@@ -1,8 +1,7 @@
-import { WEBSITE_HOST_URL } from '@/lib/constants'
-import type { Metadata } from 'next'
-import { allPosts } from 'contentlayer/generated'
-import { compareDesc } from 'date-fns'
 import { PostCard } from '@/components/PostCard'
+import { WEBSITE_HOST_URL } from '@/lib/constants'
+import { getAllPosts } from '@/lib/content'
+import type { Metadata } from 'next'
 
 const meta = {
   title: 'Blog',
@@ -11,7 +10,7 @@ const meta = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://mateszkom.com'),
+  metadataBase: new URL(WEBSITE_HOST_URL),
 
   title: meta.title,
   description: meta.description,
@@ -30,17 +29,15 @@ export const metadata: Metadata = {
 }
 
 export default function Blog() {
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  )
+  const posts = getAllPosts()
   return (
     <div className="mb-10  space-y-4  border-accent  pt-10 dark:border-accent dark:border-opacity-50">
       <h2 className="pb-2">My blog posts</h2>
-      {posts.map((post, idx) => (
-        <>
-          <PostCard key={idx} {...post} />
+      {posts.map((post) => (
+        <div key={post.url}>
+          <PostCard {...post} />
           <div className=" border-t border-muted  dark:border-muted dark:border-opacity-50"></div>
-        </>
+        </div>
       ))}
     </div>
   )

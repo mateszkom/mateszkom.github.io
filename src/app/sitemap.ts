@@ -1,8 +1,10 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
-import { allPosts } from 'contentlayer/generated'
+import { getAllPosts } from '@/lib/content'
+
+export const dynamic = 'force-static'
 
 export default async function sitemap() {
-  const posts = allPosts.map((post) => ({
+  const posts = getAllPosts().map((post) => ({
     url: `${WEBSITE_HOST_URL}${post.url}`,
     lastModified: post.date,
   }))

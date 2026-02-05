@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion } from 'framer-motion'
 
 const navigationItems = [
   { label: 'Home', href: '/' },
@@ -21,7 +20,13 @@ export function Navigation() {
             ? currentRoute === item.href
             : currentRoute.startsWith(item.href)
         return (
-          <Link key={item.label} href={item.href} passHref className="">
+          <Link
+            key={item.label}
+            href={item.href}
+            passHref
+            aria-current={isActive ? 'page' : undefined}
+            className=""
+          >
             <h4
               className={`underline decoration-accent underline-offset-8 ${
                 isActive
