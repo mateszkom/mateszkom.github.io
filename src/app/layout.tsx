@@ -4,10 +4,9 @@ import { Navigation } from '@/components/Navigation'
 import ThemeSwitch from '@/components/ThemeSwitch'
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import './global.css'
-import { useState } from 'react'
-import { Inter } from 'next/font/google'
 
 const inter = Inter({
   subsets: ['latin-ext'],
@@ -21,7 +20,7 @@ const meta = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://mateszkom.com'),
+  metadataBase: new URL(WEBSITE_HOST_URL),
 
   title: {
     default: meta.title,
@@ -58,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <header className="relative py-4">
