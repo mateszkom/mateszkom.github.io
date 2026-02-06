@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function Projects() {
   const projects = getAllProjects()
   return (
-    <div className="mb-10  space-y-4  border-gray-200 pt-10 dark:border-gray-700 dark:border-opacity-50">
+    <div className="mb-10 space-y-4 border-muted pt-10 dark:border-muted dark:border-opacity-50">
       <h2 className="pb-2">My projects </h2>
       <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((project) => (

@@ -5,15 +5,14 @@
 @layer base {
   :root {
     --background: 0 0% 96%;
-    --primary: 0 0% 5%;  
+    --primary: 0 0% 5%;
     --secondary: 0 0% 50%;
     --accent: 0 0% 20%;
     --muted: 0 0% 92%;
-
   }
 
   .dark {
-    --background: 0 0% 5%;  
+    --background: 0 0% 5%;
     --primary: 0 0% 96%;
     --secondary: 0 0% 50%;
     --accent: 0 0% 20%;
@@ -26,27 +25,22 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-primary text-sm;
+    @apply bg-background text-base text-primary;
   }
 
   h1 {
-    @apply text-2xl font-semibold  lg:text-4xl;
+    @apply text-3xl font-semibold lg:text-5xl;
   }
 
   h2 {
     @apply text-lg font-medium tracking-wide;
-
-  }
-
-  span {
-    @apply text-sm font-normal ;
   }
 
   h4 {
-    @apply text-sm font-medium tracking-tight text-primary;
+    @apply text-base font-medium tracking-tight text-primary;
   }
   h5 {
-    @apply text-sm font-medium tracking-tight text-secondary;
+    @apply text-base font-medium tracking-tight text-secondary;
   }
 
   p {
@@ -57,26 +51,25 @@
     @apply text-primary hover:text-primary/80;
   }
   ul {
-    list-style-type:disc;
+    list-style-type: disc;
   }
 }
 
 .nav-link {
-  @apply rounded-md px-6 py-2 hover:bg-accent  hover:text-accent focus:bg-accent focus:text-accent focus:outline-none;
+  @apply rounded-md px-6 py-2 hover:bg-accent hover:text-accent focus:bg-accent focus:text-accent focus:outline-none;
 }
 .nav-link2 {
-  @apply rounded-md  hover:bg-accent hover:text-accent focus:bg-accent focus:text-accent focus:outline-none;
-} 
-
-.nav-post {
-  @apply text-secondary hover:text-primary ;
+  @apply rounded-md hover:bg-accent hover:text-accent focus:bg-accent focus:text-accent focus:outline-none;
 }
 
+.nav-post {
+  @apply text-secondary hover:text-primary;
+}
 
 /* Post styles */
 
 .prose .anchor {
-  @apply absolute invisible no-underline;
+  @apply invisible absolute no-underline;
 
   margin-left: -1em;
   padding-right: 0.5em;
@@ -89,13 +82,12 @@
   @apply visible;
 }
 
-
 .prose a {
-  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply decoration-secondary decoration-[0.1em] underline-offset-2 transition-all;
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
+  @apply text-secondary;
   content: '#';
 }
 
@@ -104,15 +96,15 @@
 }
 
 .prose pre {
-  @apply border border-neutral-800;
+  @apply border border-muted;
 }
 
 .prose code {
-  @apply text-neutral-800 dark:text-neutral-200 px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg;
+  @apply rounded-lg border border-muted px-1 py-0.5 text-primary;
 }
 
 .prose pre code {
-  @apply text-neutral-800 dark:text-neutral-200;
+  @apply text-primary;
   border: initial;
 }
 
@@ -129,7 +121,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply text-neutral-50;
+  @apply text-primary;
 }
 
 pre::-webkit-scrollbar {
@@ -159,7 +151,7 @@ input[type='email'] {
 }
 
 [data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-primary;
   counter-reset: line;
   box-decoration-break: clone;
 }
@@ -173,19 +165,19 @@ input[type='email'] {
   width: 1rem;
   margin-right: 1rem;
   text-align: right;
-  color: gray;
+  color: hsl(var(--secondary));
 }
 [data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-slate-500 bg-opacity-10;
+  @apply bg-muted;
 }
 [data-rehype-pretty-code-fragment] .line-highlighted span {
   @apply relative;
 }
 [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
+  @apply rounded-md bg-muted p-1;
 }
 [data-rehype-pretty-code-title] {
-  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
+  @apply rounded-t-lg border border-muted bg-muted px-4 py-3 font-mono text-sm font-medium text-secondary;
 }
 [data-rehype-pretty-code-title] + pre {
   @apply mt-0 rounded-t-none border-t-0;

@@ -21,6 +21,7 @@ export type Project = {
   title: string
   description: string
   date: string
+  category: string
   color: string
   image: string
   content: string
@@ -77,6 +78,20 @@ const getRequiredDateString = (
   throw new Error(`Missing ${key} in ${filePath}`)
 }
 
+const isPublished = (data: Record<string, unknown>) => {
+  const value = data.published
+
+  if (value === true) {
+    return true
+  }
+
+  if (typeof value === 'string') {
+    return value.trim().toLowerCase() === 'yes'
+  }
+
+  return false
+}
+
 const getPostsInternal = () => {
   const postsDir = path.join(contentRoot, 'posts')
   const files = getMdxFiles(postsDir)
@@ -96,30 +111,35 @@ const getPostsInternal = () => {
     }
   })
 
-  return posts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  )
+  return posts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 }
 
 const getProjectsInternal = () => {
   const projectsDir = path.join(contentRoot, 'projects')
   const files = getMdxFiles(projectsDir)
 
-  const projects = files.map((fileName) => {
+  const projects = files.flatMap((fileName) => {
     const slug = fileName.replace(/\.mdx$/, '')
     const filePath = path.join(projectsDir, fileName)
     const { data, content } = readMdxFile(filePath)
 
-    return {
-      slug,
-      url: `/projects/${slug}`,
-      title: getRequiredString(data, 'title', filePath),
-      description: getRequiredString(data, 'description', filePath),
-      date: getRequiredDateString(data, 'date', filePath),
-      color: getRequiredString(data, 'color', filePath),
-      image: getRequiredString(data, 'image', filePath),
-      content,
+    if (!isPublished(data)) {
+      return []
     }
+
+    return [
+      {
+        slug,
+        url: `/projects/${slug}`,
+        title: getRequiredString(data, 'title', filePath),
+        description: getRequiredString(data, 'description', filePath),
+        date: getRequiredDateString(data, 'date', filePath),
+        category: getRequiredString(data, 'category', filePath),
+        color: getRequiredString(data, 'color', filePath),
+        image: getRequiredString(data, 'image', filePath),
+        content,
+      },
+    ]
   })
 
   return projects.sort((a, b) =>

@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="space-y-7 ">
+      <div className="space-y-7">
         <Hero />
       </div>
 
@@ -21,16 +21,16 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="mb-10 mt-10 space-y-4 border-t border-accent  pt-10 dark:border-accent dark:border-opacity-50">
-        <h2 className="pb-2">My recent blog posts</h2>
+      <div className="mb-10 mt-10 space-y-4 border-t border-accent pt-10 dark:border-accent dark:border-opacity-50">
+        <h2 className="">My recent blog posts</h2>
         {posts.map((post) => (
           <div key={post.url}>
             <PostCard {...post} />
-            <div className=" border-t border-muted  dark:border-muted dark:border-opacity-50"></div>
+            <div className="border-t border-muted dark:border-muted dark:border-opacity-50"></div>
           </div>
         ))}
       </div>
-      <div className="space-y-7  border-t border-accent   dark:border-accent">
+      <div className="space-y-7 border-t border-accent dark:border-accent">
         <Bio />
       </div>
     </div>

@@ -1,0 +1,135 @@
+---
+title: Showcase
+description: A compact gallery .
+date: 2026-02-06
+category: Exploration
+color: '#777777'
+image: /images/projects/intervar/1.jpg
+published: yes
+---
+
+<Image
+  alt="Markdown showcase hero"
+  src="/images/projects/intervar/1.jpg"
+  width={1200}
+  height={800}
+  priority
+/>
+
+## Overview
+
+This project is a sandbox for markdown rendering. It is intentionally dense so we can review typography, spacing, and component styles quickly.
+
+**Goal:** demonstrate common elements in one place.
+**Stack:** Next.js, MDX, Tailwind.
+
+---
+
+## Headings
+
+### H3 heading
+
+#### H4 heading
+
+##### H5 heading
+
+---
+
+## Text styles
+
+- **Bold text** for emphasis.
+- _Italic text_ for tone.
+- **_Bold italic_** for stronger emphasis.
+- Inline code looks like `const name = "mateszkom"`.
+- A simple link to [Home](/).
+
+> Blockquote: A short quote to test spacing and contrast.
+
+---
+
+## Lists
+
+Unordered list:
+
+- One item
+- Another item
+  - Nested item
+- Final item
+
+Ordered list:
+
+1. First
+2. Second
+3. Third
+
+Task list:
+
+- [x] Completed item
+- [ ] Pending item
+
+---
+
+## Table
+
+| Element  | Purpose          | Status |
+| -------- | ---------------- | ------ |
+| Headings | Visual hierarchy | Ready  |
+| Lists    | Structure        | Ready  |
+| Tables   | Data             | Ready  |
+| Code     | Syntax           | Ready  |
+
+---
+
+## Code blocks
+
+```ts
+type Project = {
+  title: string
+  slug: string
+  date: string
+}
+
+const project: Project = {
+  title: 'Markdown Showcase',
+  slug: 'markdown-showcase',
+  date: '2026-02-06',
+}
+```
+
+```css
+.prose {
+  max-width: none;
+}
+```
+
+```bash
+npm run dev
+```
+
+---
+
+## Image grid
+
+A quick grid to test image spacing.
+
+<Image
+  alt="Showcase image 1"
+  src="/images/projects/intervar/2.jpg"
+  width={1200}
+  height={800}
+/>
+
+<Image
+  alt="Showcase image 2"
+  src="/images/projects/intervar/3.jpg"
+  width={1200}
+  height={800}
+/>
+
+---
+
+## Call to action
+
+If this layout feels good, we can keep it as a baseline for future styling.
+
+Go back [Home](/).

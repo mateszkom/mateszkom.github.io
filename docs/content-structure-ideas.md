@@ -1,11 +1,13 @@
 # Content Structure Ideas
 
 ## Goals
+
 - Expand beyond UX/UI and graphics into programming, RPA, AI automation, scripting, and citizen development.
 - Make browsing easy by topic, not just chronology.
 - Keep the site simple to maintain with MDX and a lightweight information architecture.
 
 ## Suggested information architecture
+
 - Home
   - Short intro + quick links to core domains
   - Latest items across all domains
@@ -26,6 +28,7 @@
 - About / Resume
 
 ## Content types
+
 - Case study (long form)
 - Project (portfolio item)
 - Note (short insight)
@@ -33,39 +36,23 @@
 - Lab (experiment or prototype)
 
 ## Tagging model
+
 - Primary domain tag: `ux`, `graphic`, `code`, `rpa`, `ai`, `citizen-dev`
 - Secondary tags: `research`, `prototype`, `automation`, `scripting`, `tooling`
 - Tech tags: `nextjs`, `python`, `power-automate`, `uipath`, `openai`
 
 ## Navigation patterns
-- Add a sidebar or left rail on collection pages:
-  - Domain filters
-  - Content type filters
-  - Tags
+
 - Keep top nav small (4 to 6 items), and use filters for depth.
 
-## Example sidebar layout
-- All
-- Domains
-  - UX / UI
-  - Graphic Design
-  - Programming
-  - RPA
-  - AI Automation
-  - Citizen Dev
-- Content Types
-  - Case Study
-  - Project
-  - Note
-  - Guide
-  - Lab
-
 ## Page layout ideas
+
 - Domain landing pages with a short manifesto and featured work.
 - A unified feed with filters (domain, type, year).
 - Project pages with an optional "Problem / Process / Outcome" block.
 
 ## Next steps to implement
+
 1. Extend the Contentlayer schema to include `type`, `domain`, and `tags`.
 2. Add a filter UI for posts and projects (query params or client state).
 3. Create landing pages for each domain with featured items.

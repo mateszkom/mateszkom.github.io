@@ -69,7 +69,7 @@ const Bio = () => {
             />
             <Link
               target="_blank"
-              className="ml-2 text-sm hover:text-secondary"
+              className="ml-2 hover:text-secondary"
               href={item.href}
             >
               {item.label}

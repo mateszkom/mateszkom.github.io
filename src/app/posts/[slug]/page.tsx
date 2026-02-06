@@ -61,10 +61,13 @@ const PostLayout = async ({ params }: PageProps) => {
   return (
     <div>
       <h1>{post.title}</h1>
-      <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>
+      <time
+        className="my-4 block text-base text-secondary"
+        dateTime={post.date}
+      >
         {format(parseISO(post.date), 'LLLL d, yyyy')}
       </time>
-      <article className="prose dark:prose-invert">
+      <article className="prose max-w-none dark:prose-invert">
         <MDXRemote
           source={post.content}
           components={getMdxComponents()}
