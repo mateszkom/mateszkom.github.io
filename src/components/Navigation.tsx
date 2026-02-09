@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const navigationItems = [
   { label: 'Home', href: '/' },
@@ -21,31 +22,7 @@ function truncateLabel(label: string, maxLength: number) {
   return `${label.slice(0, maxLength).trimEnd()}...`
 }
 
-function getBreadcrumbParts(pathname: string) {
-  const segments = pathname.split('/').filter(Boolean)
-
-  if (segments.length === 0) {
-    return ['home']
-  }
-
-  const firstSegment = segments[0]
-  const matched = navigationItems.find(
-    (item) => item.href === `/${firstSegment}`,
-  )
-
-  const parts = [
-    matched ? matched.label.toLowerCase() : formatSegment(firstSegment),
-  ]
-
-  if (segments.length > 1) {
-    const lastSegment = formatSegment(segments[segments.length - 1])
-    parts.push(truncateLabel(lastSegment, 15))
-  }
-
-  return parts
-}
-
-function getBreadcrumbLinks(pathname: string) {
+function getBreadcrumbLinks(pathname: string, contentTitle?: string | null) {
   const segments = pathname.split('/').filter(Boolean)
 
   if (segments.length === 0) {
@@ -67,7 +44,9 @@ function getBreadcrumbLinks(pathname: string) {
   ]
 
   if (segments.length > 1) {
-    const lastSegment = formatSegment(segments[segments.length - 1])
+    const lastSegment = contentTitle
+      ? contentTitle.trim()
+      : formatSegment(segments[segments.length - 1])
     links.push({
       label: truncateLabel(lastSegment, 15),
       href: `/${segments.join('/')}`,
@@ -79,8 +58,15 @@ function getBreadcrumbLinks(pathname: string) {
 
 export function Navigation() {
   const currentRoute = usePathname()
-  const breadcrumbParts = getBreadcrumbParts(currentRoute)
-  const breadcrumbLinks = getBreadcrumbLinks(currentRoute)
+  const [contentTitle, setContentTitle] = useState<string | null>(null)
+
+  useEffect(() => {
+    const documentTitle = document.title
+    const cleanTitle = documentTitle.split('|')[0].trim()
+    setContentTitle(cleanTitle.length > 0 ? cleanTitle : null)
+  }, [currentRoute])
+
+  const breadcrumbLinks = getBreadcrumbLinks(currentRoute, contentTitle)
 
   return (
     <nav className="flex w-full items-center justify-between gap-6">

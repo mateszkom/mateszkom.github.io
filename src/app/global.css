@@ -12,7 +12,7 @@
   }
 
   .dark {
-    --background: 0 0% 5%;
+    --background: 0 0% 8%;
     --primary: 0 0% 96%;
     --secondary: 0 0% 50%;
     --accent: 0 0% 20%;
@@ -21,15 +21,20 @@
 }
 
 @layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-base text-primary;
+    overflow-y: scroll;
   }
 
   h1 {
-    @apply text-3xl font-semibold lg:text-5xl;
+    @apply text-2xl font-semibold lg:text-4xl;
   }
 
   h2 {
@@ -86,6 +91,18 @@
   @apply decoration-secondary decoration-[0.1em] underline-offset-2 transition-all;
 }
 
+.prose h2 {
+  @apply mt-10 text-lg font-medium;
+}
+
+.prose h3 {
+  @apply mt-8 text-base font-medium;
+}
+
+.prose h4 {
+  @apply mt-6 text-base font-medium;
+}
+
 .prose .anchor:after {
   @apply text-secondary;
   content: '#';
@@ -97,6 +114,34 @@
 
 .prose pre {
   @apply border border-muted;
+}
+
+.prose blockquote {
+  @apply border-l-2 border-secondary/40 pl-4 text-secondary;
+}
+
+.prose ul {
+  @apply my-4 list-disc pl-5;
+}
+
+.prose ol {
+  @apply my-4 list-decimal pl-5;
+}
+
+.prose hr {
+  @apply my-10 border-muted;
+}
+
+.prose table {
+  @apply my-6 w-full border-collapse text-left;
+}
+
+.prose th {
+  @apply border-b border-muted pb-2 text-primary;
+}
+
+.prose td {
+  @apply border-b border-muted py-2 text-secondary;
 }
 
 .prose code {

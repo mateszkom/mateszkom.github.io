@@ -17,19 +17,24 @@ const Hero = () => {
         <br />
         <h2>Mateusz Skomorucha</h2>
         <br />
-        <span className="text-secondary dark:text-secondary">I'm a</span>
-        <span> Designer</span>
-        <span className="text-secondary dark:text-secondary"> from</span>
-        <span> Gdańsk, Poland</span>
+        <span>Designer</span>
         <span className="text-secondary dark:text-secondary">
           {' '}
-          specialised with digital
+          from Poland, obsessed with
         </span>
-        <span className=""> e-commerce products</span>
+        <span> optimisation</span>{' '}
+        <span className="text-secondary dark:text-secondary">and</span>
+        <span> automation</span>
+        <span className="text-secondary dark:text-secondary">
+          , crafting digital
+        </span>
+        <span> experiences</span>
         <span className="text-secondary dark:text-secondary">
           {' '}
-          in marketing
-        </span>
+          that look sharp
+        </span>{' '}
+        <span className="text-secondary dark:text-secondary">and</span>
+        <span> work even better.</span>
         <p></p>
         <span className="text-secondary dark:text-secondary">
           Email me {'->'}{' '}
@@ -53,7 +58,7 @@ const Hero = () => {
       </article>
       <article className="w-full sm:col-span-1">
         <span className="text-secondary dark:text-secondary">
-          Currently working in LPP S.A. as an e-commerce graphic designer
+          Currently working in LPP S.A. as an senior graphic designer
         </span>
         <br />
         <br />

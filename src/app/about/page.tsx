@@ -33,15 +33,17 @@ export default function About() {
         <div className="space-y-4">
           <h1>About me</h1>
           <p>
-            Hi, I am Mateusz. I work as an e-commerce graphic designer at the
-            Polish company LPP S.A. My responsibilities include creating
-            promotional materials for online channels, social media, and
-            graphics for websites and mobile applications.
+            Hi, I’m Mateusz. I’m a Senior Digital Designer at LPP S.A., creating
+            visual assets for e‑commerce, social media, websites and mobile
+            apps. My work focuses on clarity, consistency and efficient,
+            scalable workflows{' '}
           </p>
           <p>
-            I have been interested in UX/UI for several years, starting around
-            2018-19. I am creating this website to document my journey in this
-            field, showcase my work, and share some aspects of my personal life.
+            For a couple of years I’ve been exploring UX/UI, automation, RPA and
+            AI‑driven processes — looking for smarter ways to design and build
+            digital products. This website is where I document that journey,
+            share what I learn, and build a small knowledge base through
+            tutorials and practical notes.
           </p>
           <p>
             I plan to write text tutorials and build a small knowledge base
@@ -49,12 +51,12 @@ export default function About() {
           </p>
           <p>
             Feel free to reach out via email at{' '}
-            <a className="link" href="mailto:contact@mateszkom.com">
-              contact@mateszkom.com
+            <a className="link" href="mailto:mateszkom@gmail.com">
+              mateszkom@gmail.com
             </a>{' '}
             or on{' '}
             <a
-              className="link"
+              className="link font-weight-"
               href="https://www.linkedin.com/in/mateuszkom/"
               target="_blank"
               rel="noreferrer"
@@ -112,7 +114,7 @@ export default function About() {
             Master 2s
           </li>
           <li>
-            <span className="font-medium text-primary">Keyboard:</span>
+            <span className="font-medium text-primary">Keyboard: </span>
             Logitech K380
           </li>
           <li>
