@@ -1,4 +1,4 @@
-import { PostCard } from '@/components/PostCard'
+import { PostsFilter } from '@/components/PostsFilter'
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import { getAllPosts } from '@/lib/content'
 import type { Metadata } from 'next'
@@ -31,14 +31,11 @@ export const metadata: Metadata = {
 export default function Blog() {
   const posts = getAllPosts()
   return (
-    <div className="mb-10  space-y-4  border-accent  pt-10 dark:border-accent dark:border-opacity-50">
+    <div className="mb-10 space-y-4 border-accent pt-10 dark:border-accent dark:border-opacity-50">
       <h2 className="pb-2">My blog posts</h2>
-      {posts.map((post) => (
-        <div key={post.url}>
-          <PostCard {...post} />
-          <div className=" border-t border-muted  dark:border-muted dark:border-opacity-50"></div>
-        </div>
-      ))}
+      <div className="mt-8">
+        <PostsFilter posts={posts} />
+      </div>
     </div>
   )
 }

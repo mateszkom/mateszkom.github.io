@@ -12,6 +12,7 @@ export type Post = {
   title: string
   description: string
   date: string
+  category: string[]
   content: string
 }
 
@@ -21,6 +22,7 @@ export type Project = {
   title: string
   description: string
   date: string
+  category: string[]
   color: string
   image: string
   content: string
@@ -77,49 +79,112 @@ const getRequiredDateString = (
   throw new Error(`Missing ${key} in ${filePath}`)
 }
 
+const getRequiredStringArray = (
+  data: Record<string, unknown>,
+  key: string,
+  filePath: string,
+) => {
+  const value = data[key]
+
+  if (Array.isArray(value)) {
+    const cleaned = value
+      .filter((item) => typeof item === 'string')
+      .map((item) => item.trim())
+      .filter((item) => item.length > 0)
+
+    if (cleaned.length > 0) {
+      return cleaned
+    }
+  }
+
+  if (typeof value === 'string' && value.trim().length > 0) {
+    return [value.trim()]
+  }
+
+  throw new Error(`Missing ${key} in ${filePath}`)
+}
+
+const isPublished = (data: Record<string, unknown>) => {
+  const value = data.published
+
+  if (typeof value === 'boolean') {
+    return value
+  }
+
+  if (typeof value === 'number') {
+    return value === 1
+  }
+
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase()
+
+    if (['yes', 'true', '1', 'y'].includes(normalized)) {
+      return true
+    }
+
+    if (['no', 'false', '0', 'n'].includes(normalized)) {
+      return false
+    }
+  }
+
+  return false
+}
+
 const getPostsInternal = () => {
   const postsDir = path.join(contentRoot, 'posts')
   const files = getMdxFiles(postsDir)
 
-  const posts = files.map((fileName) => {
+  const posts = files.flatMap((fileName) => {
     const slug = fileName.replace(/\.mdx$/, '')
     const filePath = path.join(postsDir, fileName)
     const { data, content } = readMdxFile(filePath)
 
-    return {
-      slug,
-      url: `/posts/${slug}`,
-      title: getRequiredString(data, 'title', filePath),
-      description: getRequiredString(data, 'description', filePath),
-      date: getRequiredDateString(data, 'date', filePath),
-      content,
+    if (!isPublished(data)) {
+      return []
     }
+
+    return [
+      {
+        slug,
+        url: `/posts/${slug}`,
+        title: getRequiredString(data, 'title', filePath),
+        description: getRequiredString(data, 'description', filePath),
+        date: getRequiredDateString(data, 'date', filePath),
+        category: getRequiredStringArray(data, 'category', filePath),
+        content,
+      },
+    ]
   })
 
-  return posts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  )
+  return posts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 }
 
 const getProjectsInternal = () => {
   const projectsDir = path.join(contentRoot, 'projects')
   const files = getMdxFiles(projectsDir)
 
-  const projects = files.map((fileName) => {
+  const projects = files.flatMap((fileName) => {
     const slug = fileName.replace(/\.mdx$/, '')
     const filePath = path.join(projectsDir, fileName)
     const { data, content } = readMdxFile(filePath)
 
-    return {
-      slug,
-      url: `/projects/${slug}`,
-      title: getRequiredString(data, 'title', filePath),
-      description: getRequiredString(data, 'description', filePath),
-      date: getRequiredDateString(data, 'date', filePath),
-      color: getRequiredString(data, 'color', filePath),
-      image: getRequiredString(data, 'image', filePath),
-      content,
+    if (!isPublished(data)) {
+      return []
     }
+
+    return [
+      {
+        slug,
+        url: `/projects/${slug}`,
+        title: getRequiredString(data, 'title', filePath),
+        description: getRequiredString(data, 'description', filePath),
+        date: getRequiredDateString(data, 'date', filePath),
+        category: getRequiredStringArray(data, 'category', filePath),
+        color: getRequiredString(data, 'color', filePath),
+        image: getRequiredString(data, 'image', filePath),
+        content,
+      },
+    ]
   })
 
   return projects.sort((a, b) =>

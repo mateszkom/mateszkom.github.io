@@ -56,13 +56,13 @@ const ProjectLayout = async ({ params }: PageProps) => {
   }
 
   return (
-    <div className="max-w-screen-lg	">
+    <div className="max-w-screen-lg">
       <h1>{project.title}</h1>
-      <time className="  text-sm text-secondary" dateTime={project.date}>
+      <time className="text-base text-secondary" dateTime={project.date}>
         {format(parseISO(project.date), 'LLLL d, yyyy')}
       </time>
 
-      <article className="prose-sm w-full pt-10 dark:prose-invert">
+      <article className="prose w-full max-w-none pt-10 dark:prose-invert">
         <MDXRemote
           source={project.content}
           components={getMdxComponents({ imageClassName: 'w-full rounded-lg' })}
