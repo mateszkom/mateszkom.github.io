@@ -1,10 +1,6 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
-import { allPages } from 'contentlayer/generated'
 import type { Metadata } from 'next'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import type { MDXComponents } from 'mdx/types'
-import Link from 'next/link'
-import NextImage from 'next/image'
+import Image from 'next/image'
 
 const meta = {
   title: 'About Me',
@@ -13,7 +9,7 @@ const meta = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://mateszkom.com'),
+  metadataBase: new URL(WEBSITE_HOST_URL),
 
   title: meta.title,
   description: meta.description,
@@ -30,17 +26,103 @@ export const metadata: Metadata = {
     canonical: meta.url,
   },
 }
-const mdxComponents: MDXComponents = {
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  Image: (props) => <NextImage className="rounded-lg" {...props} />,
-}
 export default function About() {
-  const page = allPages.find((page) => page._raw.sourceFileName === 'about.mdx')
-  const MDXComponent = useMDXComponent(page.body.code)
-
   return (
-    <div className="prose-sm mt-10 space-y-12 dark:prose-invert ">
-      <MDXComponent components={mdxComponents} />
+    <div className="mt-10 space-y-12">
+      <section className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-start">
+        <div className="space-y-4">
+          <h1>About me</h1>
+          <p>
+            Hi, I’m Mateusz. I’m a Senior Digital Designer at LPP S.A., creating
+            visual assets for e‑commerce, social media, websites and mobile
+            apps. My work focuses on clarity, consistency and efficient,
+            scalable workflows{' '}
+          </p>
+          <p>
+            For a couple of years I’ve been exploring UX/UI, automation, RPA and
+            AI‑driven processes — looking for smarter ways to design and build
+            digital products. This website is where I document that journey,
+            share what I learn, and build a small knowledge base through
+            tutorials and practical notes.
+          </p>
+          <p>
+            I plan to write text tutorials and build a small knowledge base
+            about UX, both for myself and others.
+          </p>
+          <p>
+            Feel free to reach out via email at{' '}
+            <a className="link" href="mailto:mateszkom@gmail.com">
+              mateszkom@gmail.com
+            </a>{' '}
+            or on{' '}
+            <a
+              className="link font-weight-"
+              href="https://www.linkedin.com/in/mateuszkom/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+            .
+          </p>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-muted bg-muted">
+          <div className="relative aspect-[2/3]">
+            <Image
+              src="/images/profile-pic.jpg"
+              alt="Portrait of Mateusz"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 360px, (min-width: 768px) 320px, 100vw"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2>Software</h2>
+        <ul className="ml-4 space-y-1">
+          <li>
+            <span className="font-medium text-primary">Design/Video:</span>{' '}
+            Adobe Creative Cloud
+          </li>
+          <li>
+            <span className="font-medium text-primary">UX/UI:</span> Figma
+          </li>
+          <li>
+            <span className="font-medium text-primary">
+              Notes/Productivity/Calendar:
+            </span>{' '}
+            Microsoft 365
+          </li>
+          <li>
+            <span className="font-medium text-primary">Coding:</span> VS Code
+          </li>
+        </ul>
+      </section>
+
+      <section className="space-y-4">
+        <h2>Hardware</h2>
+        <ul className="ml-4 space-y-1">
+          <li>
+            <span className="font-medium text-primary">Laptop:</span> Dell XPS
+            15 7590 i7-9750H/16GB/512/Win11 GTX1650
+          </li>
+          <li>
+            <span className="font-medium text-primary">Mouse:</span> Logitech MX
+            Master 2s
+          </li>
+          <li>
+            <span className="font-medium text-primary">Keyboard: </span>
+            Logitech K380
+          </li>
+          <li>
+            <span className="font-medium text-primary">Phone:</span> iPhone 12
+            mini
+          </li>
+        </ul>
+      </section>
     </div>
   )
 }

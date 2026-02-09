@@ -1,0 +1,93 @@
+'use client'
+
+import { getCategoryColors } from '@/lib/categories'
+import type { Project } from '@/lib/content'
+import { useMemo, useState } from 'react'
+import { ProjectCard } from './ProjectCard'
+
+type ProjectsFilterProps = {
+  projects: Project[]
+}
+
+export function ProjectsFilter({ projects }: ProjectsFilterProps) {
+  const [selected, setSelected] = useState<string[]>([])
+
+  const categories = useMemo(() => {
+    const set = new Set<string>()
+    projects.forEach((project) => {
+      project.category.forEach((category) => set.add(category))
+    })
+    return Array.from(set).sort((a, b) => a.localeCompare(b))
+  }, [projects])
+
+  const filteredProjects = useMemo(() => {
+    if (selected.length === 0) {
+      return projects
+    }
+
+    return projects.filter((project) =>
+      project.category.some((category) => selected.includes(category)),
+    )
+  }, [projects, selected])
+
+  const toggleCategory = (category: string) => {
+    setSelected((prev) =>
+      prev.includes(category)
+        ? prev.filter((item) => item !== category)
+        : [...prev, category],
+    )
+  }
+
+  const resetFilters = () => {
+    setSelected([])
+  }
+
+  return (
+    <div className="space-y-8">
+      <div className="flex flex-wrap items-center gap-2">
+        {categories.map((category) => {
+          const isActive = selected.includes(category)
+          const colors = getCategoryColors(category)
+
+          return (
+            <button
+              key={category}
+              type="button"
+              onClick={() => toggleCategory(category)}
+              className={
+                isActive
+                  ? 'rounded-full border border-primary px-3 py-1 text-sm font-medium'
+                  : 'rounded-full border border-secondary px-3 py-1 text-sm text-secondary'
+              }
+              style={
+                isActive
+                  ? {
+                      backgroundColor: colors.bg,
+                      color: colors.text,
+                    }
+                  : undefined
+              }
+            >
+              {category}
+            </button>
+          )
+        })}
+        {selected.length > 0 && (
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="inline-flex items-center gap-2 px-2 py-1 text-sm text-secondary hover:text-primary"
+          >
+            <span aria-hidden="true">×</span>
+            Reset
+          </button>
+        )}
+      </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {filteredProjects.map((project) => (
+          <ProjectCard key={project.url} {...project} />
+        ))}
+      </div>
+    </div>
+  )
+}

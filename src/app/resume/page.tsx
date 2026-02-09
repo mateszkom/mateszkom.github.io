@@ -1,19 +1,18 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
-import { allPages } from 'contentlayer/generated'
+import { getPageContent } from '@/lib/content'
+import { getMdxComponents, mdxOptions } from '@/lib/mdx'
 import type { Metadata } from 'next'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import type { MDXComponents } from 'mdx/types'
-import Link from 'next/link'
-import NextImage from 'next/image'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { notFound } from 'next/navigation'
 
 const meta = {
   title: 'Resume',
   description: 'My resume',
-  url: `${WEBSITE_HOST_URL}/about`,
+  url: `${WEBSITE_HOST_URL}/resume`,
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://mateszkom.com'),
+  metadataBase: new URL(WEBSITE_HOST_URL),
 
   title: meta.title,
   description: meta.description,
@@ -30,19 +29,20 @@ export const metadata: Metadata = {
     canonical: meta.url,
   },
 }
-const mdxComponents: MDXComponents = {
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  Image: (props) => <NextImage className="rounded-lg" {...props} />,
-}
 export default function About() {
-  const page = allPages.find(
-    (page) => page._raw.sourceFileName === 'resume.mdx',
-  )
-  const MDXComponent = useMDXComponent(page.body.code)
+  const content = getPageContent('resume')
+
+  if (!content) {
+    notFound()
+  }
 
   return (
     <div className="mt-10 space-y-12 ">
-      <MDXComponent components={mdxComponents} />
+      <MDXRemote
+        source={content}
+        components={getMdxComponents()}
+        options={{ mdxOptions }}
+      />
     </div>
   )
 }

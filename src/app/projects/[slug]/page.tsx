@@ -1,35 +1,36 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
-import { allProjects } from 'contentlayer/generated'
+import { getAllProjects, getProjectBySlug } from '@/lib/content'
+import { getMdxComponents, mdxOptions } from '@/lib/mdx'
 import { format, parseISO } from 'date-fns'
-import type { MDXComponents } from 'mdx/types'
 import type { Metadata } from 'next'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import NextImage from 'next/image'
-import Link from 'next/link'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
-import { MDXProvider } from '@mdx-js/react'
 
 export async function generateStaticParams() {
-  return allProjects.map((project) => ({
+  return getAllProjects().map((project) => ({
     slug: project.slug,
-    // slug: project._raw.flattenedPath,
   }))
+}
+
+type PageProps = {
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({
   params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
-  const project = allProjects.find((project) => project.slug === params.slug)
+}: PageProps): Promise<Metadata | undefined> {
+  const { slug } = await params
+  const project = getProjectBySlug(slug)
 
   if (!project) {
     return
   }
 
   const { title, description, date, url } = project
+  const canonicalUrl = `${WEBSITE_HOST_URL}${url}`
 
   return {
+    metadataBase: new URL(WEBSITE_HOST_URL),
     title,
     description,
     openGraph: {
@@ -37,40 +38,36 @@ export async function generateMetadata({
       description,
       type: 'article',
       publishedTime: date,
-      url: `${WEBSITE_HOST_URL}/projects/${url}`,
+      url: canonicalUrl,
     },
 
     alternates: {
-      canonical: `${WEBSITE_HOST_URL}/projects/${url}`,
+      canonical: canonicalUrl,
     },
   }
 }
 
-// Define your custom MDX components.
-const mdxComponents: MDXComponents = {
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  Image: (props) => <NextImage className="w-full rounded-lg" {...props} />,
-}
-
-const ProjectLayout = ({ params }: { params: { slug: string } }) => {
-  const project = allProjects.find((project) => project.slug === params.slug)
+const ProjectLayout = async ({ params }: PageProps) => {
+  const { slug } = await params
+  const project = getProjectBySlug(slug)
 
   if (!project) {
     notFound()
   }
 
-  const MDXContent = useMDXComponent(project.body.code)
-
   return (
-    <div className="max-w-screen-lg	">
+    <div className="max-w-screen-lg">
       <h1>{project.title}</h1>
-      {/* <MDXProvider components={components} /> */}
-      <time className="  text-sm text-secondary" dateTime={project.date}>
+      <time className="text-base text-secondary" dateTime={project.date}>
         {format(parseISO(project.date), 'LLLL d, yyyy')}
       </time>
 
-      <article className="prose-sm w-full pt-10 dark:prose-invert">
-        <MDXContent components={mdxComponents} />
+      <article className="prose w-full max-w-none pt-10 dark:prose-invert">
+        <MDXRemote
+          source={project.content}
+          components={getMdxComponents({ imageClassName: 'w-full rounded-lg' })}
+          options={{ mdxOptions }}
+        />
       </article>
     </div>
   )

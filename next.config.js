@@ -1,9 +1,3 @@
-const { withContentlayer } = require('next-contentlayer')
-
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-})
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: { unoptimized: true },
@@ -11,4 +5,4 @@ const nextConfig = {
   output: 'export',
 } //output: 'export'
 
-module.exports = withContentlayer(withMDX(nextConfig))
+module.exports = nextConfig

@@ -1,14 +1,13 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import Image from 'next/image'
-import profilePicImg from '/public/images/profile-pic.jpg'
 
-const Hero = (): JSX.Element => {
+const Hero = () => {
   return (
     <section className="mt-10 flex flex-col items-end gap-12 sm:grid sm:grid-cols-3">
       <article className="w-full sm:col-span-2">
         <Image
-          src={profilePicImg}
+          src="/images/profile-pic.jpg"
           priority={true}
           alt="Mateusz Skomorucha"
           className="rounded-full"
@@ -18,19 +17,24 @@ const Hero = (): JSX.Element => {
         <br />
         <h2>Mateusz Skomorucha</h2>
         <br />
-        <span className="text-secondary dark:text-secondary">I'm a</span>
-        <span> Designer</span>
-        <span className="text-secondary dark:text-secondary"> from</span>
-        <span> Gdańsk, Poland</span>
+        <span>Designer</span>
         <span className="text-secondary dark:text-secondary">
           {' '}
-          specialised with digital
+          from Poland, obsessed with
         </span>
-        <span className=""> e-commerce products</span>
+        <span> optimisation</span>{' '}
+        <span className="text-secondary dark:text-secondary">and</span>
+        <span> automation</span>
+        <span className="text-secondary dark:text-secondary">
+          , crafting digital
+        </span>
+        <span> experiences</span>
         <span className="text-secondary dark:text-secondary">
           {' '}
-          in marketing
-        </span>
+          that look sharp
+        </span>{' '}
+        <span className="text-secondary dark:text-secondary">and</span>
+        <span> work even better.</span>
         <p></p>
         <span className="text-secondary dark:text-secondary">
           Email me {'->'}{' '}
@@ -43,14 +47,18 @@ const Hero = (): JSX.Element => {
           DM me on LinkedIn -{'>'}{' '}
         </span>
         <span className="link">
-          <Link target="_blank" href="https://www.linkedin.com/in/mateszkom/">
+          <Link
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.linkedin.com/in/mateszkom/"
+          >
             /in/mateszkom
           </Link>
         </span>
       </article>
       <article className="w-full sm:col-span-1">
         <span className="text-secondary dark:text-secondary">
-          Currently working in LPP S.A. as an e-commerce graphic designer
+          Currently working in LPP S.A. as an senior graphic designer
         </span>
         <br />
         <br />
