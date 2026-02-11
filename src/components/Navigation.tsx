@@ -153,7 +153,11 @@ export function Navigation() {
           aria-label="Toggle navigation"
           aria-controls="mobile-menu"
           aria-expanded={isMenuOpen}
-          onClick={() => setIsMenuOpen((open) => !open)}
+          onClick={() =>
+            setMenuOpenRoute((openRoute) =>
+              openRoute === currentRoute ? null : currentRoute,
+            )
+          }
           className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-secondary/40 text-secondary transition hover:border-secondary hover:text-primary md:hidden"
         >
           <span className="relative block h-4 w-5">
@@ -197,7 +201,7 @@ export function Navigation() {
                     ? 'bg-primary/10 text-primary'
                     : 'text-secondary hover:bg-muted/70 hover:text-primary'
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => setMenuOpenRoute(null)}
               >
                 {item.label}
               </Link>
