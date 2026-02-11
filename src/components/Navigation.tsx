@@ -80,28 +80,12 @@ function getMobileBreadcrumbLinks(pathname: string) {
 
 export function Navigation() {
   const currentRoute = usePathname()
-  const [contentTitle, setContentTitle] = useState<string | null>(null)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const updateTitle = () => {
-      const documentTitle = document.title
-      const cleanTitle = documentTitle.split('|')[0].trim()
-      setContentTitle(cleanTitle.length > 0 ? cleanTitle : null)
-    }
-
-    updateTitle()
-
-    const titleElement = document.querySelector('title')
-    if (!titleElement) {
-      return
-    }
-
-    const observer = new MutationObserver(updateTitle)
-    observer.observe(titleElement, { childList: true })
-
-    return () => observer.disconnect()
-  }, [currentRoute])
+  const [menuOpenRoute, setMenuOpenRoute] = useState<string | null>(null)
+  const contentTitle =
+    typeof document === 'undefined'
+      ? null
+      : document.title.split('|')[0].trim() || null
+  const isMenuOpen = menuOpenRoute === currentRoute
 
   const breadcrumbLinks = getBreadcrumbLinks(currentRoute, contentTitle)
   const mobileBreadcrumbLinks = getMobileBreadcrumbLinks(currentRoute)
