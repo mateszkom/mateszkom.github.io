@@ -78,10 +78,7 @@ export default function RootLayout({
                   Mateusz Skomorucha
                 </Link>
               </span>
-              <span className="text-sm">
-                {siteMeta.footerVersion} - last update{' '}
-                {siteMeta.footerLastUpdate}
-              </span>
+              <span>{siteMeta.footerVersion}</span>
             </div>
           </Container>
         </footer>
