@@ -1,9 +1,11 @@
+import { BackToTop } from '@/components/BackToTop'
 import { Container } from '@/components/Container'
 import { Navigation } from '@/components/Navigation'
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import siteMeta from '../../content/site-meta.json'
 import './global.css'
 
 const inter = Inter({
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
     description: meta.description,
     url: WEBSITE_HOST_URL,
     siteName: meta.title,
-    locale: 'pl-PL',
+    locale: 'en-US',
     type: 'website',
     images: [
       {
@@ -38,15 +40,15 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // twitter: {
-  //   title: meta.title,
-  //   description: meta.description,
-  //   images: meta.image,
-  //   card: 'summary_large_image',
-  // },
-  // alternates: {
-  //   canonical: WEBSITE_HOST_URL,
-  // },
+  twitter: {
+    title: meta.title,
+    description: meta.description,
+    images: [meta.image],
+    card: 'summary_large_image',
+  },
+  alternates: {
+    canonical: WEBSITE_HOST_URL,
+  },
 }
 
 export default function RootLayout({
@@ -69,14 +71,18 @@ export default function RootLayout({
         </main>
         <footer className="py-16">
           <Container>
-            <span className="text-secondary">
-              by{' '}
-              <Link className="link" href="/about">
-                Mateusz Skomorucha
-              </Link>
-            </span>
+            <div className="flex flex-col gap-2 text-secondary sm:flex-row sm:items-center sm:justify-between">
+              <span>
+                by{' '}
+                <Link className="link" href="/about">
+                  Mateusz Skomorucha
+                </Link>
+              </span>
+              <span>{siteMeta.footerVersion}</span>
+            </div>
           </Container>
         </footer>
+        <BackToTop />
       </body>
     </html>
   )

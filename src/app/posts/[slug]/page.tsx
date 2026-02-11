@@ -28,6 +28,7 @@ export async function generateMetadata({
 
   const { title, description, date, url } = post
   const canonicalUrl = `${WEBSITE_HOST_URL}${url}`
+  const ogImage = `${WEBSITE_HOST_URL}/og-preview.jpg`
 
   return {
     metadataBase: new URL(WEBSITE_HOST_URL),
@@ -39,10 +40,17 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: date,
       url: canonicalUrl,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
     },
     twitter: {
       title,
       description,
+      images: [ogImage],
+      card: 'summary_large_image',
     },
     alternates: {
       canonical: canonicalUrl,

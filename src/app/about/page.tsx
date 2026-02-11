@@ -31,7 +31,7 @@ export default function About() {
     <div className="mt-10 space-y-12">
       <section className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-start">
         <div className="space-y-4">
-          <h1>About me</h1>
+          <h2>About me</h2>
           <p>
             Hi, I’m Mateusz. I’m a Senior Digital Designer at LPP S.A., creating
             visual assets for e‑commerce, social media, websites and mobile
