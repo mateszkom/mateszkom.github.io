@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: meta.description,
     url: WEBSITE_HOST_URL,
     siteName: meta.title,
-    locale: 'pl-PL',
+    locale: 'en-US',
     type: 'website',
     images: [
       {
@@ -40,15 +40,15 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // twitter: {
-  //   title: meta.title,
-  //   description: meta.description,
-  //   images: meta.image,
-  //   card: 'summary_large_image',
-  // },
-  // alternates: {
-  //   canonical: WEBSITE_HOST_URL,
-  // },
+  twitter: {
+    title: meta.title,
+    description: meta.description,
+    images: [meta.image],
+    card: 'summary_large_image',
+  },
+  alternates: {
+    canonical: WEBSITE_HOST_URL,
+  },
 }
 
 export default function RootLayout({
