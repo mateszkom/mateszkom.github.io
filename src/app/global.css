@@ -75,11 +75,10 @@
 
 .prose .anchor {
   @apply invisible absolute no-underline;
-
-  margin-left: -1em;
+  margin-left: -1.25em;
   padding-right: 0.5em;
-  width: 100%;
-  max-width: 1440px;
+  width: 1.25em;
+  max-width: 1.25em;
   cursor: pointer;
 }
 
