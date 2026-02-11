@@ -103,10 +103,6 @@ export function Navigation() {
     return () => observer.disconnect()
   }, [currentRoute])
 
-  useEffect(() => {
-    setIsMenuOpen(false)
-  }, [currentRoute])
-
   const breadcrumbLinks = getBreadcrumbLinks(currentRoute, contentTitle)
   const mobileBreadcrumbLinks = getMobileBreadcrumbLinks(currentRoute)
 
@@ -217,6 +213,7 @@ export function Navigation() {
                     ? 'bg-primary/10 text-primary'
                     : 'text-secondary hover:bg-muted/70 hover:text-primary'
                 }`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
