@@ -1,0 +1,752 @@
+---
+title: DesignAutomator
+description: Photoshop plugin automating design workflows
+date: 2026-02-17
+category: ['Case study', 'Development']
+color: '#565656'
+image: /images/projects/designautomator/designautomator.jpg
+published: yes
+---
+
+---
+
+import Image from 'next/image'
+
+## The Project
+
+### DesignAutomator – Automating Repetitive Design Tasks in Adobe Photoshop
+
+**DesignAutomator is a Adobe Photoshop plugin** that revolutionises how designers approach multilingual and multi-format campaigns. \
+The tool automates tedious, manual work, slashing project timelines from hours to minutes whilst maintaining absolute control over quality and precision.
+
+**Role:** Full-Stack Developer, UX Designer \
+**Technologies:** React, TypeScript, Redux, Adobe UXP API, Webpack \
+**Tools:** Figma, Adobe Photoshop, VS Code, UXP Developer Tools, [Alchemist](https://github.com/jardicc/alchemist)
+
+---
+
+## Origin Story
+
+**Why Build DesignAutomator?**
+
+While working on marketing campaigns across multiple markets and formats, I noticed a frustrating pattern: **85% of my work consisted of repetitive, mechanical tasks** – swapping text for each language, resizing elements, maintaining alignment, exporting in various formats.
+
+**I needed a tool that would:**
+
+- Allow me to manage multiple languages without leaving Photoshop
+- Automatically adapt layouts across different dimensions
+- Maintain visual consistency across all variants
+- Reduce manual work from hours to minutes
+
+I started with simple scripts automating basic tasks. **As new challenges arose, I added features incrementally** – intelligent alignment, responsive resizing, colour management, asset swapping. This organic approach built a plugin that **genuinely solves real-world problems** I encountered daily.
+
+The result is a tool **I use myself every day** and which has evolved alongside my changing needs as both designer and developer.
+
+---
+
+## The Challenge
+
+Design teams at marketing agencies and creative departments face a recurring problem:
+
+**Multilingual, multi-format campaigns** require manual:
+
+- Duplicating artboards for each language and market
+- Creating export versions in multiple dimensions (web, mobile, print)
+- Aligning and resizing elements in every variant
+- Organising files across folder structures
+- Mapping CSV data into designs (products, prices, descriptions)
+
+**Cost**: A single campaign = **10+ hours of repetitive, manual labour**.
+
+---
+
+## The Solution
+
+**DesignAutomator automates the entire workflow** through intelligent batch processing:
+
+✨ **Single setup** → dozens of variants in minutes \
+🌍 **Multi-language support** → unlimited languages/versions with live preview \
+📐 **Smart resizing** → automatic dimension adjustment whilst maintaining proportions \
+🎨 **Colour management** → predefined palettes, one-click colour changes \
+🖼️ **Asset swapping** → automatic logo and graphic substitution \
+📊 **CSV import** → dynamic variant generation from data \
+🎯 **Multi-format export** → JPG, PNG, MP4 in automated folder structures \
+🤖 **AI Integration** → generative background fill (Photoshop + Firefly)
+
+**Result**: Time reduction from **10 hours → 90 minutes** without compromising quality.
+
+### Before & After – Real Results
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
+    alignItems: 'center',
+    gap: 20,
+    width: '100%',
+    margin: '30px 0',
+  }}
+>
+  <Image
+    alt={`Before - Manual Work`}
+    src={`/images/projects/designautomator/before.png`}
+    width={280}
+    height={280}
+    style={{
+      width: '100%',
+      maxWidth: 280,
+      height: 'auto',
+      borderRadius: 8,
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    }}
+  />
+  <div
+    style={{
+      fontSize: 32,
+      color: '#ffffff',
+      fontWeight: 'bold',
+      lineHeight: 1,
+    }}
+  >
+    →
+  </div>
+  <Image
+    alt={`After - Automated`}
+    src={`/images/projects/designautomator/after.png`}
+    width={280}
+    height={280}
+    style={{
+      width: '100%',
+      maxWidth: 280,
+      height: 'auto',
+      borderRadius: 8,
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    }}
+  />
+</div>
+
+---
+
+## User Interface
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '30px 0' }}>
+  <Image
+    alt={`Plugin User Interface`}
+    src={`/images/projects/designautomator/UI.png`}
+    width={1200}
+    height={800}
+    priority
+    style={{
+      maxWidth: 600,
+      width: '100%',
+      height: 'auto',
+      borderRadius: 8,
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    }}
+  />
+</div>
+
+---
+
+## Key Features
+
+### 1. Batch Processing – Dozens of Artboards
+
+Process multiple artboards simultaneously without UI freezing:
+
+```
+Input: Master artboard set + configuration
+       ↓
+Processing: Asynchronous operations (BatchPlay API)
+       ↓
+Output: Dozens of artboards across languages/formats
+```
+
+**Technical implementation:**
+
+- Adobe BatchPlay API for asynchronous commands
+- Redux managing operation queues
+- Real-time progress updates with non-blocking UI
+- Error handling and operation cancellation
+
+### 2. Multilingual Support & Localisation
+
+Automated management of unlimited language variants:
+
+**Supported Languages – Proof of Multi-Language Processing:**
+
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    gap: 4,
+    flexWrap: 'nowrap',
+    width: '100%',
+    margin: '25px 0',
+  }}
+>
+  <Image
+    alt={`Polish`}
+    src={`/images/projects/designautomator/PL.png`}
+    width={72}
+    height={48}
+    title="Polish"
+    style={{
+      width: 'clamp(24px, 8vw, 56px)',
+      height: 'auto',
+      borderRadius: 6,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    }}
+  />
+  <Image
+    alt={`German`}
+    src={`/images/projects/designautomator/DE.png`}
+    width={72}
+    height={48}
+    title="German"
+    style={{
+      width: 'clamp(24px, 8vw, 56px)',
+      height: 'auto',
+      borderRadius: 6,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    }}
+  />
+  <Image
+    alt={`Czech`}
+    src={`/images/projects/designautomator/CZ.png`}
+    width={72}
+    height={48}
+    title="Czech"
+    style={{
+      width: 'clamp(24px, 8vw, 56px)',
+      height: 'auto',
+      borderRadius: 6,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    }}
+  />
+  <Image
+    alt={`Hungarian`}
+    src={`/images/projects/designautomator/HU.png`}
+    width={72}
+    height={48}
+    title="Hungarian"
+    style={{
+      width: 'clamp(24px, 8vw, 56px)',
+      height: 'auto',
+      borderRadius: 6,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    }}
+  />
+  <Image
+    alt={`Lithuanian`}
+    src={`/images/projects/designautomator/LT.png`}
+    width={72}
+    height={48}
+    title="Lithuanian"
+    style={{
+      width: 'clamp(24px, 8vw, 56px)',
+      height: 'auto',
+      borderRadius: 6,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    }}
+  />
+  <Image
+    alt={`Romanian`}
+    src={`/images/projects/designautomator/RO.png`}
+    width={72}
+    height={48}
+    title="Romanian"
+    style={{
+      width: 'clamp(24px, 8vw, 56px)',
+      height: 'auto',
+      borderRadius: 6,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    }}
+  />
+  <Image
+    alt={`Slovak`}
+    src={`/images/projects/designautomator/SK.png`}
+    width={72}
+    height={48}
+    title="Slovak"
+    style={{
+      width: 'clamp(24px, 8vw, 56px)',
+      height: 'auto',
+      borderRadius: 6,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    }}
+  />
+</div>
+
+**Architecture:**
+
+```json
+{
+  "languages.json": {
+    "PL": { "name": "Polish" },
+    "DE": { "name": "German" },
+    "CZ": { "name": "Czech" }
+    ...
+  }
+}
+```
+
+**Workflow:**
+
+1. System scans text layers
+2. Pattern matching identifies target elements
+3. Automatic text mapping from configuration
+4. Generate N artboards with language variants into respective folders
+
+### 3. Smart Alignment & Precise Manipulation
+
+Advanced layer operations with pixel-perfect precision:
+
+**Intelligent alignment options** (customisable per artboard):
+
+- **Vertical Alignment** – centring, top/bottom content alignment
+- **Dynamic Content Alignment** – automatic adjustment as content changes
+- **CTA Button Auto-resize** – buttons automatically fit text length
+- **Grid-based Positioning** – TextBox positioning with tolerance
+
+**Additional operations:**
+
+- **Text Reflow** – automatic text wrapping with custom rules
+- **Batch Properties Edit** – modify properties across multiple layers
+- **Smart Resize** – scale whilst preserving aspect ratio
+
+**Challenge**: Projects have vastly different layer organisations \
+**Solution**: Pattern matching on naming + hierarchical scanning \
+**Result**: ~99% success rate without manual per-project configuration
+
+### 4. Data-Driven Design (CSV Integration)
+
+Import external data and generate variants automatically:
+
+```
+CSV File (N rows) + Template Design
+         ↓
+Mapping Layer Names → CSV Columns
+         ↓
+N unique artboards with real data
+```
+
+**Use cases**: E-commerce product cards, personalised campaigns, dynamic catalogues
+
+### 5. Colour Management System
+
+Change element colours using predefined palettes:
+
+**Functionality:**
+
+- **One-click Colour Change** – transform element colours instantly
+- **Predefined Palettes** – brand/seasonal/campaign colour sets
+- **Batch Colour Application** – apply palettes across artboards
+- **Colour Consistency** – maintain visual harmony
+
+**Use cases**: Seasonal campaigns, colour A/B testing, brand consistency
+
+### 6. Asset Swapping & Image Operations
+
+Intelligent asset substitution and manipulation:
+
+**Logo Swapping:**
+
+- Automatic logo substitution (multiple variants)
+- Pattern matching for different versions (light/dark, colour/monochrome)
+- Position and size preservation
+
+**Image Operations:**
+
+- **FIT** – resize images with cropping
+- **FILL** – fill areas whilst maintaining proportions
+- **Smart Object handling** – work with editable smart objects
+
+**Use cases**: Multi-brand campaigns, seasonal graphic updates
+
+### 7. Interactive Language Switching
+
+Switch between language variants without batch processing:
+
+**Functionality:**
+
+- **Real-time Preview** – instant language variant preview
+- **UI-based Switching** – switch through plugin interface
+- **Quick Testing** – rapidly verify all languages
+- **Live Edit Mode** – edit with instant preview
+
+**Benefit**: Verify language versions without generating all artboards
+
+### 8. Export Pipeline with Multi-Format Support
+
+Intelligent export with configurable structure and formats:
+
+**Supported formats:**
+
+- **JPG** – with configurable quality settings
+- **PNG** – with transparency options
+- **MP4** – video export for animated campaigns
+
+**Folder structure:**
+
+```
+Project_Name/
+├── Type_1/
+│   ├── PL/
+│   │   ├── 1200x630_project_name_date_PL.jpg
+│   │   └── 1920x1080_project_name_date_PL.jpg
+│   └── DE/
+├── Type_2/
+└── Type_3/
+...
+```
+
+**Naming Convention**: `{format}_{project_name}_{date}_{language}.{ext}` – fully customisable
+
+**Batch Export:** All formats and languages in a single operation
+
+### 9. Background Generation & Fill
+
+Automatic background creation using Photoshop's native tools and AI:
+
+**Photoshop Native:**
+
+- **Content-Aware Fill** – intelligent area filling
+- **Generative Fill** – AI-powered background generation
+
+**Use cases**: Rapid prototyping, completing missing elements, background creation
+
+### 10. Advanced Variable Sets Management
+
+Manage language variable sets from the Advanced panel:
+
+**Functionality:**
+
+- **Variable Set Creation** – create new variable sets
+- **CSV Translation Database** – access large translation libraries
+- **Auto-apply Translations** – automatically apply translations to artboards
+- **Translation Reuse** – leverage existing translations without leaving Photoshop
+
+**Workflow:**
+
+```
+CSV Database (1000+ translations)
+         ↓
+Select Translation Set → Create Variables
+         ↓
+Apply to Artboards → Generate Variants
+```
+
+**Benefit**: No manual text copying – single source of truth for translations
+
+---
+
+## Technical Architecture
+
+### Stack & Tools
+
+**Frontend:**
+
+- React 17 + TypeScript (strict mode)
+- Redux Toolkit for state management
+- Custom hooks for Photoshop API integration
+- CSS Modules for styling
+
+**Build System:**
+
+- Webpack 5 with custom configuration
+- Babel for transpilation
+- ESLint + Prettier for code quality
+
+**Adobe Integration:**
+
+- UXP (Unified Extensibility Platform)
+- BatchPlay API for low-level operations
+- Custom TypeScript definitions for Photoshop API
+
+### Modular Architecture (Atomic Design)
+
+```
+components/
+├── atoms/          → Buttons, Inputs, Toggles
+├── molecules/      → Form fields, Option panels
+├── organisms/      → Header, Footer, Main sections
+└── pages/          → Complete views
+
+features/           → Redux slices (functionality)
+├── align/
+├── dataset/
+├── language/
+├── resize/
+└── type/
+
+functions/          → Business logic
+├── batch/          → Batch processing core
+├── batchPlay/      → Photoshop commands
+├── edit/           → Layer manipulation
+└── create/         → Asset generation
+```
+
+**Benefits:**
+
+- Reusable components → faster prototyping
+- Separated concerns → easier testing
+- Scalable architecture → effortless feature addition
+
+### State Management with Redux
+
+**Why Redux?**
+
+- Single source of truth for complex state
+- Time-travel debugging
+- Middleware for async operations
+- Predictable state transitions
+
+**Slices pattern:**
+
+```typescript
+// alignSlice.ts
+const alignSlice = createSlice({
+  name: 'align',
+  initialState: { mode: 'center', tolerance: 2 },
+  reducers: {
+    setAlignMode: (state, action) => { ... },
+    alignLayers: (state, action) => { ... }
+  }
+});
+```
+
+Each plugin feature = dedicated slice → modularity + separation of concerns
+
+---
+
+## Technical Challenges & Solutions
+
+### Challenge #1: Performance with Dozens of Artboards
+
+**Problem:** Processing dozens of artboards froze Photoshop's UI, preventing work
+
+**Root causes:**
+
+- Synchronous command execution blocks the main thread
+- React re-renders on every state change
+- Photoshop API isn't thread-safe
+
+**Solution:**
+
+1. **Asynchronous BatchPlay API** – queue system for commands
+2. **Batched state updates** – optimised Redux updates
+3. **Progressive rendering** – show progress every N operations, not on every change
+4. **Worker-like pattern** – simulate background processing
+
+```typescript
+async function processBatch(artboards: Artboard[]) {
+  const batchSize = 10
+  for (let i = 0; i < artboards.length; i += batchSize) {
+    const batch = artboards.slice(i, i + batchSize)
+    await Promise.all(batch.map(processArtboard))
+    dispatch(updateProgress((i / artboards.length) * 100))
+  }
+}
+```
+
+**Result:** Processing without UI freeze + live progress updates, cancel operations anytime
+
+### Challenge #2: Pattern Matching Across Different Structures
+
+**Problem:** Projects have vastly different layer organisations – automating mapping seemed impossible
+
+**Assumptions:**
+
+- Layers can exist in any hierarchy
+- Names follow different conventions (camelCase, snake_case, spaces)
+- Some layers are in groups, others standalone
+
+**Solution:**
+
+```typescript
+function findMatchingLayers(pattern: string, tolerance: number) {
+  // 1. Recursive scan of entire layer tree
+  // 2. Normalise names (lowercase, remove special chars)
+  // 3. Fuzzy matching with Levenshtein distance
+  // 4. Group detection (parent-child relationships)
+  // 5. Return closest matches with confidence scores
+}
+```
+
+**Result:** ~99% success rate without manual per-project configuration
+
+### Challenge #3: TypeScript Type Safety with the Photoshop API
+
+**Problem:** Adobe's Photoshop UXP API lacks type definitions
+
+**Impact:**
+
+- No IDE autocomplete
+- Runtime errors difficult to debug
+- No compile-time validation
+
+**Solution:**
+
+```typescript
+// uxp.d.ts – custom type definitions
+declare module 'photoshop' {
+  export const app: {
+    activeDocument: Document
+    batchPlay: (commands: BatchPlayCommand[]) => Promise<any[]>
+  }
+
+  export interface Document {
+    layers: LayerCollection
+    artboards: ArtboardCollection
+  }
+
+  // + 500+ lines of custom definitions
+}
+```
+
+**Result:**
+
+- Full IntelliSense support
+- Compile-time error detection
+- Better developer experience
+
+---
+
+## Skills Demonstrated
+
+### **Frontend Development**
+
+✅ React + TypeScript (strict mode, custom hooks) \
+✅ Complex state management (Redux Toolkit) \
+✅ Component architecture (Atomic Design) \
+✅ CSS Modules, responsive design
+
+### **API Integration**
+
+✅ Adobe UXP/Photoshop API \
+✅ Custom TypeScript definitions \
+✅ Async operations handling \
+✅ Error boundaries and fallbacks
+
+### **Software Architecture**
+
+✅ Modular architecture (slices, separation of concerns) \
+✅ Scalable codebase design \
+✅ Pattern matching algorithms \
+✅ Performance optimisation
+
+### **Problem Solving**
+
+✅ Performance bottlenecks (async processing) \
+✅ Type safety in untyped APIs \
+✅ Complex state management \
+✅ User experience (progress, feedback, error handling)
+
+### **Build & Tooling**
+
+✅ Webpack configuration \
+✅ Babel transpilation \
+✅ ESLint + Prettier \
+✅ Development workflow optimisation
+
+---
+
+## Results & Impact
+
+### Business Metrics
+
+**Before DesignAutomator:**
+
+- Single campaign = 10+ hours of manual work
+- High risk of copy-paste errors
+- Difficulty maintaining consistency
+- Production bottleneck
+
+**After DesignAutomator:**
+
+- Single campaign = 90 minutes + configuration
+- Elimination of manual errors (full automation)
+- 100% consistency across variants
+- Scales to dozens of markets
+- **10+ advanced features** from a single interface:
+  - Smart alignment with per-artboard options
+  - Colour management with one-click palette switching
+  - Asset swapping (logos, graphics)
+  - Multi-format export (JPG, PNG, MP4)
+  - Live language preview without batch processing
+  - AI-powered background generation
+  - Translation database integration within Photoshop
+
+### Technical Achievement
+
+✅ **Production-ready** – deployed and used daily \
+✅ **Scalable** – processes dozens of artboards simultaneously \
+✅ **Maintainable** – modular architecture, straightforward updates \
+✅ **User-friendly** – intuitive UI, minimal learning curve \
+✅ **Interruptible** – cancel operations at any time
+
+---
+
+## Lessons & Insights
+
+### What Went Well
+
+**1. Modular architecture from the start** \
+Choosing Redux + slices pattern from day one dramatically simplified later development. Adding new features = new slice, zero refactoring.
+
+**2. TypeScript strict mode** \
+Custom type definitions for the Photoshop API initially felt like overhead, but saved countless hours debugging runtime errors.
+
+**3. Organic development based on real needs** \
+Rather than planning all features upfront, **I developed the plugin incrementally as needs arose**. Each new feature (colour management, asset swapping, AI integration) addressed concrete problems encountered daily. This ensured every feature delivered real value.
+
+**4. User feedback early and often** \
+Regular testing with designers revealed edge cases and naming conventions I'd never anticipated.
+
+### What I Learned
+
+**Performance optimisation in Adobe Plugins:** \
+Standard web performance patterns don't always apply – you must tailor solutions to Photoshop's single-threaded environment.
+
+**Type safety with legacy APIs:** \
+Writing custom type definitions is an investment that pays dividends – better DX, fewer bugs, easier onboarding.
+
+**The power of declarative configuration:** \
+JSON configs for languages and formats became a game-changer. Zero code changes when adding new variants.
+
+**Build tools you actually use:** \
+The best way to build a useful tool is **solving your own problems**. Using the plugin daily provides invaluable feedback. You immediately see what works, what doesn't, and what needs improvement.
+
+### What I'd Change
+
+**1. Write tests earlier** \
+Testing came post-launch. Starting with TDD would have saved debugging time.
+
+**2. Documentation as a living document** \
+Documentation was written at the end, not alongside code. Next time: docs-driven development.
+
+**3. Analytics from the beginning** \
+Tracking feature usage would have helped prioritise development. Adding it later meant lost insights.
+
+---
+
+## Summary
+
+**DesignAutomator is a real-world example** of how modern web technologies (React, TypeScript, Redux) solve concrete business problems beyond typical web applications.
+
+The project developed **organically in response to genuine needs** – rather than planning all features upfront, each new capability was added as real problems emerged during daily work.
+
+**Key takeaways:**
+
+- Automation saves dozens of hours per project
+- Good architecture = scalability and effortless feature expansion
+- Type safety = fewer bugs, better DX
+- **Build tools you actually use** = the best feedback loop
+- Organic development > Big upfront planning
+
+**Tech stack:** React, TypeScript, Redux, Adobe UXP API, Webpack \
+**Features:** 10+ advanced capabilities (alignment, colour management, asset swapping, multi-format export, AI integration) \
+**Result:** 85% time reduction (10h → 90min), production-ready tool used daily
+
+---

@@ -1,7 +1,7 @@
+import { MdxPreviewImage } from '@/components/MdxPreviewImage'
 import { cn } from '@/lib/utils'
 import type { CompileOptions } from '@mdx-js/mdx'
 import type { MDXComponents } from 'mdx/types'
-import NextImage from 'next/image'
 import Link from 'next/link'
 import type { ComponentPropsWithoutRef } from 'react'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -19,7 +19,7 @@ const Anchor = ({
   const isExternal =
     typeof href === 'string' &&
     (href.startsWith('http') || href.startsWith('mailto:'))
-  const safeRel = target === '_blank' ? rel ?? 'noreferrer' : rel
+  const safeRel = target === '_blank' ? (rel ?? 'noreferrer') : rel
 
   if (isExternal || !href) {
     return (
@@ -41,8 +41,38 @@ export const getMdxComponents = (options?: { imageClassName?: string }) => {
 
   return {
     a: Anchor,
+    img: (props: ComponentPropsWithoutRef<'img'>) => {
+      const parsedWidth =
+        typeof props.width === 'number'
+          ? props.width
+          : typeof props.width === 'string'
+            ? Number.parseInt(props.width, 10)
+            : undefined
+      const parsedHeight =
+        typeof props.height === 'number'
+          ? props.height
+          : typeof props.height === 'string'
+            ? Number.parseInt(props.height, 10)
+            : undefined
+
+      return (
+        <MdxPreviewImage
+          src={typeof props.src === 'string' ? props.src : ''}
+          alt={props.alt}
+          title={props.title}
+          width={Number.isFinite(parsedWidth) ? parsedWidth : undefined}
+          height={Number.isFinite(parsedHeight) ? parsedHeight : undefined}
+          className={cn(imageClassName, props.className)}
+          style={props.style}
+        />
+      )
+    },
     Image: (props) => (
-      <NextImage {...props} className={cn(imageClassName, props.className)} />
+      <MdxPreviewImage
+        {...props}
+        src={typeof props.src === 'string' ? props.src : ''}
+        className={cn(imageClassName, props.className)}
+      />
     ),
   } satisfies MDXComponents
 }
