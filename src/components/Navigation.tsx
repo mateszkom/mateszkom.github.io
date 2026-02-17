@@ -78,11 +78,12 @@ function getMobileBreadcrumbLinks(pathname: string) {
 
 export function Navigation() {
   const currentRoute = usePathname()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  useEffect(() => {
-    setIsMenuOpen(false)
-  }, [currentRoute])
+  const [menuOpenRoute, setMenuOpenRoute] = useState<string | null>(null)
+  const contentTitle =
+    typeof document === 'undefined'
+      ? null
+      : document.title.split('|')[0].trim() || null
+  const isMenuOpen = menuOpenRoute === currentRoute
 
   const breadcrumbLinks = getBreadcrumbLinks(currentRoute)
   const mobileBreadcrumbLinks = getMobileBreadcrumbLinks(currentRoute)
@@ -149,8 +150,12 @@ export function Navigation() {
           type="button"
           aria-label="Toggle navigation"
           aria-controls="mobile-menu"
-          aria-expanded={isMenuOpen ? 'true' : 'false'}
-          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-expanded={isMenuOpen}
+          onClick={() =>
+            setMenuOpenRoute((openRoute) =>
+              openRoute === currentRoute ? null : currentRoute,
+            )
+          }
           className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-secondary/40 text-secondary transition hover:border-secondary hover:text-primary md:hidden"
         >
           <span className="relative block h-4 w-5">
@@ -194,7 +199,7 @@ export function Navigation() {
                     ? 'bg-primary/10 text-primary'
                     : 'text-secondary hover:bg-muted/70 hover:text-primary'
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => setMenuOpenRoute(null)}
               >
                 {item.label}
               </Link>
