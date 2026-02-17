@@ -80,12 +80,15 @@ function getMobileBreadcrumbLinks(pathname: string) {
 
 export function Navigation() {
   const currentRoute = usePathname()
-  const [menuOpenRoute, setMenuOpenRoute] = useState<string | null>(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const contentTitle =
     typeof document === 'undefined'
       ? null
       : document.title.split('|')[0].trim() || null
-  const isMenuOpen = menuOpenRoute === currentRoute
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [currentRoute])
 
   const breadcrumbLinks = getBreadcrumbLinks(currentRoute, contentTitle)
   const mobileBreadcrumbLinks = getMobileBreadcrumbLinks(currentRoute)
@@ -152,7 +155,7 @@ export function Navigation() {
           type="button"
           aria-label="Toggle navigation"
           aria-controls="mobile-menu"
-          aria-expanded={isMenuOpen}
+          aria-expanded={isMenuOpen ? 'true' : 'false'}
           onClick={() => setIsMenuOpen((open) => !open)}
           className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-secondary/40 text-secondary transition hover:border-secondary hover:text-primary md:hidden"
         >
