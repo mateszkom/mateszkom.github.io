@@ -22,7 +22,7 @@ function truncateLabel(label: string, maxLength: number) {
   return `${label.slice(0, maxLength).trimEnd()}...`
 }
 
-function getBreadcrumbLinks(pathname: string, contentTitle?: string | null) {
+function getBreadcrumbLinks(pathname: string) {
   const segments = pathname.split('/').filter(Boolean)
 
   if (segments.length === 0) {
@@ -44,9 +44,7 @@ function getBreadcrumbLinks(pathname: string, contentTitle?: string | null) {
   ]
 
   if (segments.length > 1) {
-    const lastSegment = contentTitle
-      ? contentTitle.trim()
-      : formatSegment(segments[segments.length - 1])
+    const lastSegment = formatSegment(segments[segments.length - 1])
     links.push({
       label: truncateLabel(lastSegment, 15),
       href: `/${segments.join('/')}`,
@@ -81,16 +79,12 @@ function getMobileBreadcrumbLinks(pathname: string) {
 export function Navigation() {
   const currentRoute = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const contentTitle =
-    typeof document === 'undefined'
-      ? null
-      : document.title.split('|')[0].trim() || null
 
   useEffect(() => {
     setIsMenuOpen(false)
   }, [currentRoute])
 
-  const breadcrumbLinks = getBreadcrumbLinks(currentRoute, contentTitle)
+  const breadcrumbLinks = getBreadcrumbLinks(currentRoute)
   const mobileBreadcrumbLinks = getMobileBreadcrumbLinks(currentRoute)
 
   return (
